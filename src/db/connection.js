@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
+import { set, connect } from "mongoose";
 
-mongoose.set('strictQuery', true);
+set("strictQuery", true);
 
 const connectToDatabase = async (url) =>
-  await mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+  await connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
-module.exports = {
+export default {
   connectToDatabase,
 };
