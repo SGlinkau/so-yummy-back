@@ -2,7 +2,7 @@ import express, { json } from "express";
 import logger from "morgan";
 import cors from "cors";
 import { serve, setup } from "swagger-ui-express";
-import swaggerDocument from "../swagger.json";
+import swaggerDocument from "../swagger.json" assert { type: "json" };
 import { responseError } from "./helpers/apiHelpers.js";
 import { RouteNotFoundError } from "./helpers/errors.js";
 import { errorMiddleware } from "./middlewares/errors.js";
