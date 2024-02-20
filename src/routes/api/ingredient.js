@@ -1,10 +1,8 @@
-const express = require("express");
-const { ingredient: controller } = require("../../controllers");
+import { Router } from "express";
+import { ingredient as controller } from "../../controllers";
 
-
-const ingredientRouter = express.Router();
+const ingredientRouter = Router();
 
 ingredientRouter.get("/", controller.getIngredient);
- 
 
-module.exports = ingredientRouter;
+export default ingredientRouter;
