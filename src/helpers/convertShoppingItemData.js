@@ -7,4 +7,4 @@ const convertShoppingItemData = (item) => {
   return { _id, value, ingredient, recipeId };
 };
 
-module.exports = { convertShoppingItemData };
+export default { convertShoppingItemData };

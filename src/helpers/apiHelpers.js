@@ -10,12 +10,12 @@ const responseError = (error) => ({
 });
 
 const responseData = (data, statusCode) => ({
-  status: 'success',
+  status: "success",
   code: statusCode,
   data,
 });
 
-module.exports = {
+export default {
   asyncWrapper,
   responseData,
   responseError,
