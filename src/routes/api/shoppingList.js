@@ -1,17 +1,17 @@
-const express = require('express');
-const { shoppingList: controller } = require('../../controllers');
-const {
-  shoppingList: middleware,
-  auth: authMiddleware,
-  pagination: paginationMiddleware,
-} = require('../../middlewares');
+import { Router } from "express";
+import { shoppingList as controller } from "../../controllers";
+import {
+  shoppingList as middleware,
+  auth as authMiddleware,
+  pagination as paginationMiddleware,
+} from "../../middlewares";
 
-const shoppingListRouter = express.Router();
+const shoppingListRouter = Router();
 
 shoppingListRouter.use(authMiddleware.auth);
 shoppingListRouter
-  .get('/', paginationMiddleware.pagination, controller.get)
-  .post('/', middleware.add, controller.add)
-  .delete('/:id', middleware.delete, controller.delete);
+  .get("/", paginationMiddleware.pagination, controller.get)
+  .post("/", middleware.add, controller.add)
+  .delete("/:id", middleware.delete, controller.delete);
 
-module.exports = shoppingListRouter;
+export default shoppingListRouter;

@@ -1,7 +1,5 @@
-module.exports = {
-  auth: require("./auth"),
-  ingredients: require("./ingredients"),
-  users: require("./users"),
-  shoppingListRouter: require("./shoppingList"),
-  recipes: require("./recipes"),
-};
+export const auth = require("./auth");
+export const ingredients = require("./ingredients").default;
+export const users = require("./users").default;
+export const shoppingListRouter = require("./shoppingList").default;
+export const recipes = require("./recipes").default;

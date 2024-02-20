@@ -1,12 +1,13 @@
-const express = require("express");
-const { user: controller, achievements } = require("../../controllers");
+import { Router } from "express";
+import { user as controller, achievements } from "../../controllers";
+import middlewares from "../../middlewares";
 const {
   user: middleware,
   auth: authMiddleware,
   uploadImage: { avatarImage },
-} = require("../../middlewares");
+} = middlewares;
 
-const usersRouter = express.Router();
+const usersRouter = Router();
 
 usersRouter.use(authMiddleware.auth);
 usersRouter.patch(
@@ -22,4 +23,4 @@ usersRouter.patch(
   controller.addSubscription
 );
 usersRouter.get("/achievements", achievements.get);
-module.exports = usersRouter;
+export default usersRouter;

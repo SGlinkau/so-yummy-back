@@ -1,11 +1,18 @@
-const express = require("express");
-const controller = require("../../controllers/recipes");
-const {
+import { Router } from "express";
+import {
+  getAllRecipes,
+  getCategories,
+  getNewest,
+  getRecipesByCategory,
+  getRecipeById,
+} from "../../controllers/recipes";
+import {
   ownRecipes,
   popularRecipes,
   search,
   favorites,
-} = require("../../controllers");
+} from "../../controllers";
+import middlewares from "../../middlewares";
 const {
   auth: authMiddleware,
   recipe: middleware,
@@ -14,19 +21,15 @@ const {
   pagination: paginationMiddleware,
   newest: newestMiddleware,
   uploadImage: { recipeImage },
-} = require("../../middlewares");
-const RequestFieldType = require("../../types/requestFieldType");
-const routerRecipe = express.Router();
+} = middlewares;
+import { body, params } from "../../types/requestFieldType";
+const routerRecipe = Router();
 
 routerRecipe.use(authMiddleware.auth);
 
-routerRecipe.get(
-  "/",
-  paginationMiddleware.pagination,
-  controller.getAllRecipes
-);
-routerRecipe.get("/categories", controller.getCategories);
-routerRecipe.get("/newest", newestMiddleware.newest, controller.getNewest);
+routerRecipe.get("/", paginationMiddleware.pagination, getAllRecipes);
+routerRecipe.get("/categories", getCategories);
+routerRecipe.get("/newest", newestMiddleware.newest, getNewest);
 routerRecipe.get(
   "/own",
   paginationMiddleware.pagination,
@@ -51,9 +54,9 @@ routerRecipe.get(
   "/categories/:categoryName",
   middleware.recipeCategoryName,
   paginationMiddleware.pagination,
-  controller.getRecipesByCategory
+  getRecipesByCategory
 );
-routerRecipe.get("/:recipeId", middleware.recipeId, controller.getRecipeById);
+routerRecipe.get("/:recipeId", middleware.recipeId, getRecipeById);
 
 routerRecipe.post(
   "/own",
@@ -63,7 +66,7 @@ routerRecipe.post(
 );
 routerRecipe.post(
   "/favorites",
-  favoritesMiddleware.recipeId(RequestFieldType.body),
+  favoritesMiddleware.recipeId(body),
   favorites.addFavorite
 );
 routerRecipe.delete(
@@ -73,8 +76,8 @@ routerRecipe.delete(
 );
 routerRecipe.delete(
   "/favorites/:recipeId",
-  favoritesMiddleware.recipeId(RequestFieldType.params),
+  favoritesMiddleware.recipeId(params),
   favorites.deleteFavorite
 );
 
-module.exports = routerRecipe;
+export default routerRecipe;
