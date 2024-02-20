@@ -1,5 +1,5 @@
-const { ingredients: service } = require("../services");
-const { asyncWrapper, responseData } = require("../helpers/apiHelpers");
+import { ingredients as service } from "../services";
+import { asyncWrapper, responseData } from "../helpers/apiHelpers";
 
 const getRecipeByIngredientController = async (req, res) => {
   const { value } = req.query;
@@ -15,6 +15,4 @@ const getRecipeByIngredientController = async (req, res) => {
   );
 };
 
-module.exports = {
-  getIngredients: asyncWrapper(getRecipeByIngredientController),
-};
+export const getIngredients = asyncWrapper(getRecipeByIngredientController);

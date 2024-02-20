@@ -1,5 +1,5 @@
-const { asyncWrapper, responseData } = require('../helpers/apiHelpers');
-const { achievements: service } = require('../services');
+import { asyncWrapper, responseData } from "../helpers/apiHelpers";
+import { achievements as service } from "../services";
 
 const getAchievements = async (req, res) => {
   const { id } = req.user;
@@ -15,6 +15,4 @@ const getAchievements = async (req, res) => {
   );
 };
 
-module.exports = {
-  get: asyncWrapper(getAchievements),
-};
+export const get = asyncWrapper(getAchievements);

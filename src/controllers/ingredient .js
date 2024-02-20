@@ -1,12 +1,9 @@
-const Ingredient = require("../models/ingredient");
-const { asyncWrapper} = require("../helpers/apiHelpers");
-
+import { find } from "../models/ingredient";
+import { asyncWrapper } from "../helpers/apiHelpers";
 
 const getIngredient = async (req, res) => {
-  const ingredients = await Ingredient.find();
+  const ingredients = await find();
   res.send(ingredients);
 };
 
-module.exports = {
-  getIngredient: asyncWrapper(getIngredient),
-};
+export const getIngredient = asyncWrapper(getIngredient);
