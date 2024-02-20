@@ -1,6 +1,6 @@
 const SearchType = Object.freeze({
-  title: 'title',
-  ingredient: 'ingredient',
+  title: "title",
+  ingredient: "ingredient",
 });
 
-module.exports = SearchType;
+export default SearchType;
