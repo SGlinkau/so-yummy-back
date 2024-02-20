@@ -1,15 +1,30 @@
-export const error = require("./errors");
-export const auth = require("./auth");
-export const recipe = require("./recipe");
-export const googleAuth = require("./googleAuth");
-export const search = require("./search");
-export const ingredients = require("./ingredients");
-export const pagination = require("./pagination");
-export const user = require("./user");
-export const uploadImage = require("./uploadImage");
-export const shoppingList = require("./shoppingList");
-export const favorites = require("./favorites");
-export const newest = require("./newest");
+import * as error from "./errors.js";
+import * as auth from "./auth.js";
+import * as recipe from "./recipe.js";
+import * as googleAuth from "./googleAuth.js";
+import * as search from "./search.js";
+import * as ingredients from "./ingredients.js";
+import * as pagination from "./pagination.js";
+import * as user from "./user.js";
+import * as uploadImage from "./uploadImage.js";
+import * as shoppingList from "./shoppingList.js";
+import * as favorites from "./favorites.js";
+import * as newest from "./newest.js";
+
+export {
+  error,
+  auth,
+  recipe,
+  googleAuth,
+  search,
+  ingredients,
+  pagination,
+  user,
+  uploadImage,
+  shoppingList,
+  favorites,
+  newest,
+};
 
 export const middlewares = {
   error,

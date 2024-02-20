@@ -1,6 +1,8 @@
-import { object } from "joi";
+// import { object } from "joi";
+import pkg from "joi";
+const { object } = pkg;
 
-import { RequestFieldType } from "../types";
+import { RequestFieldType } from "../types/index.js";
 import { validationFields } from "../helpers/validation.js";
 import { validationRequest } from "../helpers/validation.js";
 import { validationRequestWithImg } from "../helpers/validation.js";
