@@ -1,6 +1,6 @@
-const { asyncWrapper, responseData } = require('../../helpers/apiHelpers');
-const { NotFoundError } = require('../../helpers/errors');
-const { ownRecipes: service } = require('../../services');
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
+import { NotFoundError } from "../../helpers/errors";
+import { ownRecipes as service } from "../../services";
 
 const deleteRecipe = async (req, res) => {
   const { id: owner } = req.user;
@@ -9,7 +9,7 @@ const deleteRecipe = async (req, res) => {
   const result = await service.deleteById(recipeId, owner);
 
   if (!result) {
-    throw new NotFoundError('Recipe with this id not found');
+    throw new NotFoundError("Recipe with this id not found");
   }
 
   res.status(200).json(
@@ -22,4 +22,4 @@ const deleteRecipe = async (req, res) => {
   );
 };
 
-module.exports = asyncWrapper(deleteRecipe);
+export default asyncWrapper(deleteRecipe);

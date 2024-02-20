@@ -1,10 +1,10 @@
-const { asyncWrapper, responseData } = require("../../helpers/apiHelpers");
-const { ownRecipes: service } = require("../../services");
-const {
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
+import { ownRecipes as service } from "../../services";
+import {
   MAX_LIMIT_PER_PAGE,
   DEFAULT_LIMIT_PER_PAGE,
   DEFAULT_PAGE,
-} = require("../../helpers/variables");
+} from "../../helpers/variables";
 
 const getOwnRecipes = async (req, res) => {
   const { id: owner } = req.user;
@@ -24,4 +24,4 @@ const getOwnRecipes = async (req, res) => {
   );
 };
 
-module.exports = asyncWrapper(getOwnRecipes);
+export default asyncWrapper(getOwnRecipes);
