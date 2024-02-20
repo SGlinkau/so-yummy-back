@@ -1,8 +1,8 @@
-const cloudinary = require('cloudinary').v2;
-const multer = require('multer');
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
-require('dotenv').config();
-const { ValidationError } = require('../helpers/errors');
+import { v2 as cloudinary } from "cloudinary";
+import multer from "multer";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+require("dotenv").config();
+import { ValidationError } from "../helpers/errors";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -14,14 +14,14 @@ const avatarStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: (req) => {
     return {
-      folder: 'avatars',
-      allowedFormats: ['jpg', 'jpeg', 'png'],
+      folder: "avatars",
+      allowedFormats: ["jpg", "jpeg", "png"],
       public_id: `${req.user.id}`,
       transformation: [
-        { width: 250, height: 250, crop: 'limit' },
+        { width: 250, height: 250, crop: "limit" },
         { quality: 100 },
-        { fetch_format: 'auto' },
-        { format: 'jpg', filename: `${req.user.id}` },
+        { fetch_format: "auto" },
+        { format: "jpg", filename: `${req.user.id}` },
       ],
     };
   },
@@ -30,17 +30,17 @@ const avatarStorage = new CloudinaryStorage({
 const recipeStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: 'recipes',
-    allowedFormats: ['jpg', 'png'],
-    transformation: [{ width: 600, height: 600, crop: 'limit' }],
+    folder: "recipes",
+    allowedFormats: ["jpg", "png"],
+    transformation: [{ width: 600, height: 600, crop: "limit" }],
   },
 });
 
 const fileFilter = (_req, file, cb) => {
-  const [type] = file.mimetype.split('/');
+  const [type] = file.mimetype.split("/");
 
-  if (type !== 'image') {
-    return cb(new ValidationError('You can upload only the image file'));
+  if (type !== "image") {
+    return cb(new ValidationError("You can upload only the image file"));
   }
 
   cb(null, true);
@@ -58,7 +58,7 @@ const recipeImage = multer({
   fileFilter,
 });
 
-module.exports = {
+export default {
   avatarImage,
   recipeImage,
 };

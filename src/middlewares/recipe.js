@@ -1,9 +1,13 @@
-const Joi = require('joi');
+import { object } from "joi";
 
-const { RequestFieldType } = require('../types');
-const { validationFields, validationRequest, validationRequestWithImg } = require('../helpers/validation');
+import { RequestFieldType } from "../types";
+import {
+  validationFields,
+  validationRequest,
+  validationRequestWithImg,
+} from "../helpers/validation";
 
-const recipeSchema = Joi.object({
+const recipeSchema = object({
   title: validationFields.title.required(),
   category: validationFields.category.required(),
   instructions: validationFields.instructions.required(),
@@ -12,16 +16,23 @@ const recipeSchema = Joi.object({
   ingredients: validationFields.ingredients.required(),
 });
 
-const recipeIdSchema = Joi.object({
+const recipeIdSchema = object({
   recipeId: validationFields.id.required(),
 });
 
-const recipeCategoryNameSchema = Joi.object({
+const recipeCategoryNameSchema = object({
   categoryName: validationFields.category.required(),
 });
 
-module.exports = {
-  recipe: validationRequestWithImg(recipeSchema, RequestFieldType.body),
-  recipeId: validationRequest(recipeIdSchema, RequestFieldType.params),
-  recipeCategoryName: validationRequest(recipeCategoryNameSchema, RequestFieldType.params),
-};
+export const recipe = validationRequestWithImg(
+  recipeSchema,
+  RequestFieldType.body
+);
+export const recipeId = validationRequest(
+  recipeIdSchema,
+  RequestFieldType.params
+);
+export const recipeCategoryName = validationRequest(
+  recipeCategoryNameSchema,
+  RequestFieldType.params
+);

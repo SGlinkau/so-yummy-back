@@ -1,5 +1,5 @@
-const { responseError } = require('../helpers/apiHelpers');
-const { BaseError, ServerError } = require('../helpers/errors');
+import { responseError } from "../helpers/apiHelpers";
+import { BaseError, ServerError } from "../helpers/errors";
 
 // eslint-disable-next-line no-unused-vars
 const errorMiddleware = (error, _req, res, _next) => {
@@ -10,4 +10,4 @@ const errorMiddleware = (error, _req, res, _next) => {
   return res.status(500).json(responseError(new ServerError(error.message)));
 };
 
-module.exports = errorMiddleware;
+export default errorMiddleware;
