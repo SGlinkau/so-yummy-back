@@ -1,4 +1,6 @@
-import passport, { use } from "passport";
+// import passport, { use } from "passport";
+import pkg from "passport";
+const { use } = pkg;
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 
 use(
