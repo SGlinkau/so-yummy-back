@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { Recipe } = require("../models");
+import { Types } from "mongoose";
+import { Recipe } from "../models";
 
 // Get recipes with pagination
 const getRecipes = async (limit, page) => {
@@ -53,7 +53,7 @@ const getRecipeById = async (recipeId) => {
   const recipe = await Recipe.aggregate([
     {
       $match: {
-        _id: new mongoose.Types.ObjectId(recipeId),
+        _id: new Types.ObjectId(recipeId),
       },
     },
     {
@@ -190,7 +190,7 @@ const getRecipesByCategories = async (categories) => {
 
   return result[0];
 };
-module.exports = {
+export default {
   getRecipes,
   getRecipeById,
   getRecipesByCategoryName,

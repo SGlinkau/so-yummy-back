@@ -1,4 +1,4 @@
-const { ShoppingList } = require('../models');
+import { ShoppingList } from "../models";
 
 const getAll = async (id) => {
   const shoppingList = await ShoppingList.aggregate([
@@ -9,16 +9,16 @@ const getAll = async (id) => {
     },
     {
       $lookup: {
-        from: 'ingredients',
-        localField: 'ingredient',
-        foreignField: '_id',
-        as: 'ingredient',
+        from: "ingredients",
+        localField: "ingredient",
+        foreignField: "_id",
+        as: "ingredient",
       },
     },
     {
       $set: {
         ingredient: {
-          $arrayElemAt: ['$ingredient', 0],
+          $arrayElemAt: ["$ingredient", 0],
         },
       },
     },
@@ -27,7 +27,7 @@ const getAll = async (id) => {
         shoppingList: [],
         count: [
           {
-            $count: 'total',
+            $count: "total",
           },
         ],
       },
@@ -60,16 +60,16 @@ const getByUserId = async (id, limit, page) => {
     },
     {
       $lookup: {
-        from: 'ingredients',
-        localField: 'ingredient',
-        foreignField: '_id',
-        as: 'ingredient',
+        from: "ingredients",
+        localField: "ingredient",
+        foreignField: "_id",
+        as: "ingredient",
       },
     },
     {
       $set: {
         ingredient: {
-          $arrayElemAt: ['$ingredient', 0],
+          $arrayElemAt: ["$ingredient", 0],
         },
       },
     },
@@ -85,7 +85,7 @@ const getByUserId = async (id, limit, page) => {
         ],
         count: [
           {
-            $count: 'total',
+            $count: "total",
           },
         ],
       },
@@ -103,7 +103,7 @@ const getByUserId = async (id, limit, page) => {
           recipeId: 1,
         },
         total: {
-          $arrayElemAt: ['$count.total', 0],
+          $arrayElemAt: ["$count.total", 0],
         },
         page: {
           $literal: page,
@@ -122,16 +122,19 @@ const add = async (data) => {
   const item = new ShoppingList(data);
   await item.save();
 
-  return item.populate('ingredient', '_id ttl thb');
+  return item.populate("ingredient", "_id ttl thb");
 };
 
 const removeById = async (id, owner) => {
-  const item = await ShoppingList.findOneAndRemove({ _id: id, owner }).populate('ingredient', '_d ttl thb');
+  const item = await ShoppingList.findOneAndRemove({ _id: id, owner }).populate(
+    "ingredient",
+    "_d ttl thb"
+  );
 
   return item;
 };
 
-module.exports = {
+export default {
   getAll,
   getByUserId,
   add,

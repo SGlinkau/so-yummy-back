@@ -1,4 +1,4 @@
-const { Recipe } = require("../models");
+import { Recipe } from "../models";
 
 const get = async (page, limit) => {
   const recipes = await Recipe.aggregate([
@@ -24,6 +24,6 @@ const get = async (page, limit) => {
   return recipes[0];
 };
 
-module.exports = {
+export default {
   get,
 };

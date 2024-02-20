@@ -1,4 +1,4 @@
-const { Recipe } = require('../models');
+import { Recipe } from '../models';
 
 const getFavoritesRecipes = async (userId, page, limit) => {
   const pipeline = [
@@ -12,13 +12,13 @@ const getFavoritesRecipes = async (userId, page, limit) => {
     {
       $facet: {
         recipes: [{ $skip: page * limit - limit }, { $limit: limit }],
-        count: [{ $count: 'total' }],
+        count: [{ $count: "total" }],
       },
     },
     {
       $project: {
         recipes: 1,
-        total: { $arrayElemAt: ['$count.total', 0] },
+        total: { $arrayElemAt: ["$count.total", 0] },
         page: { $literal: page },
         limit: { $literal: limit },
       },
@@ -34,7 +34,14 @@ const addRecipeToFavorite = async (recipeId, userId) => {
     { _id: recipeId },
     { $push: { favorites: userId } },
     { new: true }
-  ).select({ title: 1, category: 1, description: 1, thumb: 1, preview: 1, time: 1 });
+  ).select({
+    title: 1,
+    category: 1,
+    description: 1,
+    thumb: 1,
+    preview: 1,
+    time: 1,
+  });
   // const recipe = await Recipe.findOneAndUpdate({ _id: recipeId }, { $addToSet: { favorites: userId } }, { new: true });
 
   return recipe;
@@ -45,7 +52,14 @@ const deleteRecipeFromFavorites = async (recipeId, userId) => {
     { _id: recipeId },
     { $pull: { favorites: userId } },
     { new: true }
-  ).select({ title: 1, category: 1, description: 1, thumb: 1, preview: 1, time: 1 });
+  ).select({
+    title: 1,
+    category: 1,
+    description: 1,
+    thumb: 1,
+    preview: 1,
+    time: 1,
+export default
 
   return recipe;
 };

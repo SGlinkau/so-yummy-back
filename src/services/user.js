@@ -1,4 +1,4 @@
-const { User } = require('../models');
+import { User } from "../models";
 
 // Get user by email
 const getUserByEmail = async (email) => {
@@ -47,7 +47,7 @@ const checkSubscriptionStatus = async (id, email) => {
   return { currentUserProfile, userSubscribedByEmail };
 };
 
-module.exports = {
+export default {
   getUserByEmail,
   getUserByRefreshToken,
   getUserByVerificationToken,
