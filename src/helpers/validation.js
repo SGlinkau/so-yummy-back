@@ -1,9 +1,10 @@
 import { isValidObjectId } from "mongoose";
 import { string, number } from "joi";
-import { RequestFieldType, SearchType } from "../types";
-import { ValidationError } from "./errors";
+import { RequestFieldType } from "../types/requestFieldType.js";
+import { SearchType } from "../types/searchTypes.js";
+import { ValidationError } from "./errors.js";
 import { v2 } from "cloudinary";
-import { CATEGORIES } from "./variables";
+import { CATEGORIES } from "./variables.js";
 
 const idValidation = (value, helpers) => {
   // Use error to return an existing error code

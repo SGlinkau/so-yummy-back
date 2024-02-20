@@ -1,7 +1,7 @@
 import { object, string } from "joi";
-import { validationRequest } from "../helpers/validation";
-import { CATEGORIES } from "../helpers/variables";
-import { RequestFieldType } from "../types";
+import { validationRequest } from "../helpers/validation.js";
+import { CATEGORIES } from "../helpers/variables.js";
+import { RequestFieldType } from "../types/requestFieldType.js";
 
 const newestSchema = object({
   categories: string()

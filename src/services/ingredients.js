@@ -1,4 +1,4 @@
-import { find } from "../models/ingredient";
+import { find } from "../models/ingredient.js";
 
 const getIngredients = async (value) => {
   const searchQuery = {};

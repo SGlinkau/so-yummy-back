@@ -1,5 +1,6 @@
 import { object } from "joi";
-import { validationRequest, validationFields } from "../helpers/validation";
+import { validationFields } from "../helpers/validation.js";
+import { validationRequest } from "../helpers/validation.js";
 import { RequestFieldType } from "../types";
 
 const ShoppingListSchema = object({
@@ -13,4 +14,7 @@ const deleteSchema = object({
 });
 
 export const add = validationRequest(ShoppingListSchema, RequestFieldType.body);
-export const delete = validationRequest(deleteSchema, RequestFieldType.params);
+export const deleteValidator = validationRequest(
+  deleteSchema,
+  RequestFieldType.params
+);

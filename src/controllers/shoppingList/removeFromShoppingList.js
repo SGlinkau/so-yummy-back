@@ -1,7 +1,7 @@
-import { shoppingList as service } from "../../services";
-import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
-import { NotFoundError } from "../../helpers/errors";
-import { convertShoppingItemData } from "../../helpers/convertShoppingItemData";
+import { shoppingList as service } from "../../services/index.js";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
+import { NotFoundError } from "../../helpers/errors.js";
+import { convertShoppingItemData } from "../../helpers/convertShoppingItemData.js";
 
 const removeFromShoppingList = async (req, res) => {
   const { id } = req.params;

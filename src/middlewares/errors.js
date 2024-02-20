@@ -1,5 +1,5 @@
-import { responseError } from "../helpers/apiHelpers";
-import { BaseError, ServerError } from "../helpers/errors";
+import { responseError } from "../helpers/apiHelpers.js";
+import { BaseError, ServerError } from "../helpers/errors.js";
 
 // eslint-disable-next-line no-unused-vars
 const errorMiddleware = (error, _req, res, _next) => {

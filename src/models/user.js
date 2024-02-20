@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import { hash, genSalt, compare } from "bcrypt";
 
-import { isEmailValid } from "../helpers/validation";
+import { isEmailValid } from "../helpers/validation.js";
 
 const schema = new Schema(
   {

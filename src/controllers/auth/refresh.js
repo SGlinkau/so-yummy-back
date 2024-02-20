@@ -1,8 +1,8 @@
 import { verify } from "jsonwebtoken";
-import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
-import { ForbiddenError } from "../../helpers/errors";
-import { getUserByRefreshToken } from "../../services/user";
-import { updateTokensById } from "../../services/auth";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
+import { ForbiddenError } from "../../helpers/errors.js";
+import { getUserByRefreshToken } from "../../services/user.js";
+import { updateTokensById } from "../../services/auth.js";
 
 const { JWT_REFRESH_SECRET } = process.env;
 

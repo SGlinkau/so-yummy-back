@@ -1,11 +1,11 @@
 import { object, string } from "joi";
 import { verify } from "jsonwebtoken";
 
-import { user as service } from "../services";
-import { UnAuthorizedError } from "../helpers/errors";
-import { convertUserData } from "../helpers/convertUserData";
-import { validationFields, validationRequest } from "../helpers/validation";
-import { RequestFieldType } from "../types";
+import { user as service } from "../services/user.js";
+import { UnAuthorizedError } from "../helpers/errors.js";
+import { convertUserData } from "../helpers/convertUserData.js";
+import { validationFields, validationRequest } from "../helpers/validation.js";
+import { RequestFieldType } from "../types/requestFieldType.js";
 
 const { JWT_ACCESS_SECRET } = process.env;
 

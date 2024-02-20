@@ -1,4 +1,4 @@
-import { Recipe } from '../models';
+import { Recipe } from '../models/recipe.js';
 
 const getFavoritesRecipes = async (userId, page, limit) => {
   const pipeline = [
@@ -59,11 +59,11 @@ const deleteRecipeFromFavorites = async (recipeId, userId) => {
     thumb: 1,
     preview: 1,
     time: 1,
-export default
+export default });
 
   return recipe;
-};
 
+}
 const findFavoriteRecipeByUserId = async (recipeId, userId) => {
   const recipe = await Recipe.findOne({
     _id: recipeId,

@@ -1,4 +1,4 @@
-import { Recipe } from "../models";
+import { Recipe } from "../models/recipe.js";
 
 const get = async (page, limit) => {
   const recipes = await Recipe.aggregate([

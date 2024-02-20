@@ -1,11 +1,9 @@
 import { object } from "joi";
 
 import { RequestFieldType } from "../types";
-import {
-  validationFields,
-  validationRequest,
-  validationRequestWithImg,
-} from "../helpers/validation";
+import { validationFields } from "../helpers/validation.js";
+import { validationRequest } from "../helpers/validation.js";
+import { validationRequestWithImg } from "../helpers/validation.js";
 
 const recipeSchema = object({
   title: validationFields.title.required(),

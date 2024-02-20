@@ -1,7 +1,8 @@
 import { object } from "joi";
-import { validationFields, validationRequest } from "../helpers/validation";
-import { ValidationError } from "../helpers/errors";
-import { RequestFieldType } from "../types";
+import { validationFields } from "../helpers/validation.js";
+import { validationRequest } from "../helpers/validation.js";
+import { ValidationError } from "../helpers/errors.js";
+import { RequestFieldType } from "../types/requestFieldType.js";
 
 const editProfileSchema = object({
   name: validationFields.name.optional(),

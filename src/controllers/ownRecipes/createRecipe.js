@@ -1,8 +1,8 @@
 import { v2 } from "cloudinary";
 
-import { ValidationError } from "../../helpers/errors";
-import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
-import { ownRecipes as service } from "../../services";
+import { ValidationError } from "../../helpers/errors.js";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
+import { ownRecipes as service } from "../../services/index.js";
 
 const createRecipe = async (req, res) => {
   const { id: owner } = req.user;

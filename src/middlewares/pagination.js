@@ -1,6 +1,6 @@
 import { object } from "joi";
-import { validationFields, validationRequest } from "../helpers/validation";
-import { RequestFieldType } from "../types";
+import { validationFields, validationRequest } from "../helpers/validation.js";
+import { RequestFieldType } from "../types/requestFieldType.js";
 
 const paginationSchema = object({
   page: validationFields.page.optional(),

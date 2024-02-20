@@ -1,4 +1,4 @@
-import { ShoppingList } from "../models";
+import { ShoppingList } from "../models/shoppingList.js";
 
 const getAll = async (id) => {
   const shoppingList = await ShoppingList.aggregate([

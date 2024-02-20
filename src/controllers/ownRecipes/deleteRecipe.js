@@ -1,6 +1,6 @@
-import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
-import { NotFoundError } from "../../helpers/errors";
-import { ownRecipes as service } from "../../services";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
+import { NotFoundError } from "../../helpers/errors.js";
+import { ownRecipes as service } from "../../services/index.js";
 
 const deleteRecipe = async (req, res) => {
   const { id: owner } = req.user;

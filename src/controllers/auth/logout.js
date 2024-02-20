@@ -1,5 +1,5 @@
-import { asyncWrapper } from "../../helpers/apiHelpers";
-import { auth as service } from "../../services";
+import { asyncWrapper } from "../../helpers/apiHelpers.js";
+import { auth as service } from "../../services/index.js";
 
 const logout = async (req, res) => {
   const { id } = req.user;

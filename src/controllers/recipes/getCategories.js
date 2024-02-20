@@ -1,5 +1,5 @@
-import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
-import { CATEGORIES } from "../../helpers/variables";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
+import { CATEGORIES } from "../../helpers/variables.js";
 
 const getCategories = async (_req, res) => {
   return res.status(200).json(

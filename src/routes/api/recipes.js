@@ -1,18 +1,15 @@
 import { Router } from "express";
-import {
-  getAllRecipes,
-  getCategories,
-  getNewest,
-  getRecipesByCategory,
-  getRecipeById,
-} from "../../controllers/recipes";
-import {
-  ownRecipes,
-  popularRecipes,
-  search,
-  favorites,
-} from "../../controllers";
-import middlewares from "../../middlewares";
+import { getAllRecipes } from "../../controllers/recipes/getAllRecipes.js";
+import { getCategories } from "../../controllers/recipes/getCategories.js";
+import { getNewest } from "../../controllers/recipes/getNewest.js";
+import { getRecipesByCategory } from "../../controllers/recipes/getRecipesByCategory.js";
+import { getRecipeById } from "../../controllers/recipes/getRecipeById.js";
+
+import { ownRecipes } from "../../controllers/";
+import { popularRecipes } from "../../controllers";
+import { search } from "../../controllers";
+import { favorites } from "../../controllers";
+import { middlewares } from "../../middlewares";
 const {
   auth: authMiddleware,
   recipe: middleware,

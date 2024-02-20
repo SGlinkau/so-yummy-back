@@ -2,7 +2,7 @@ import { v2 as cloudinary } from "cloudinary";
 import multer from "multer";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 require("dotenv").config();
-import { ValidationError } from "../helpers/errors";
+import { ValidationError } from "../helpers/errors.js";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,

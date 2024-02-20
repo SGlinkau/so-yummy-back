@@ -1,5 +1,5 @@
-import { ingredients as service } from "../services";
-import { asyncWrapper, responseData } from "../helpers/apiHelpers";
+import { ingredients as service } from "../services/index.js";
+import { asyncWrapper, responseData } from "../helpers/apiHelpers.js";
 
 const getRecipeByIngredientController = async (req, res) => {
   const { value } = req.query;

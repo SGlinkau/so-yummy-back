@@ -1,6 +1,6 @@
-import { auth as service } from "../../services";
-import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
-import { convertUserData } from "../../helpers/convertUserData";
+import { auth as service } from "../../services/index.js";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
+import { convertUserData } from "../../helpers/convertUserData.js";
 
 const login = async (req, res) => {
   const { email, password } = req.body;
