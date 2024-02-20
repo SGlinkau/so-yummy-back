@@ -1,6 +1,6 @@
-const { recipes: service } = require('../../services');
-const { asyncWrapper, responseData } = require('../../helpers/apiHelpers');
-const { NotFoundError } = require('../../helpers/errors');
+import { recipes as service } from "../../services";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
+import { NotFoundError } from "../../helpers/errors";
 
 const getRecipeById = async (req, res) => {
   const { recipeId } = req.params;
@@ -14,4 +14,4 @@ const getRecipeById = async (req, res) => {
   return res.status(200).json(responseData({ recipe }, 200));
 };
 
-module.exports = asyncWrapper(getRecipeById);
+export default asyncWrapper(getRecipeById);

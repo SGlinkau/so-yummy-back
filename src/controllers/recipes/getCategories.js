@@ -1,5 +1,5 @@
-const { asyncWrapper, responseData } = require('../../helpers/apiHelpers');
-const { CATEGORIES } = require('../../helpers/variables');
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
+import { CATEGORIES } from "../../helpers/variables";
 
 const getCategories = async (_req, res) => {
   return res.status(200).json(
@@ -12,4 +12,4 @@ const getCategories = async (_req, res) => {
   );
 };
 
-module.exports = asyncWrapper(getCategories);
+export default asyncWrapper(getCategories);
