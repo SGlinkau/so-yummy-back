@@ -1,6 +1,4 @@
-module.exports = {
-  User: require('./user'),
-  Recipe: require('./recipe'),
-  Ingredient: require('./ingredient'),
-  ShoppingList: require('./shoppingList'),
-};
+export const User = require("./user").default;
+export const Recipe = require("./recipe").default;
+export const Ingredient = require("./ingredient").default;
+export const ShoppingList = require("./shoppingList").default;
