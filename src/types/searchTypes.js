@@ -5,3 +5,5 @@ export const SearchType = Object.freeze({
   title,
   ingredient,
 });
+
+export default SearchType;

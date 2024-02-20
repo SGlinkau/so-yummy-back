@@ -1,2 +1,4 @@
-export const RequestFieldType = require("./requestFieldType").default;
-export const SearchType = require("./searchTypes").default;
+import { RequestFieldType } from "./requestFieldType.js";
+import { SearchType } from "./searchTypes.js";
+
+export default { RequestFieldType, SearchType };
