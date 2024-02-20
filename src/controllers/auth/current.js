@@ -1,7 +1,7 @@
-const { asyncWrapper, responseData } = require('../../helpers/apiHelpers');
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
 
 const currentUser = async (req, res) => {
   res.status(200).json(responseData({ user: req.user }, 200));
 };
 
-module.exports = asyncWrapper(currentUser);
+export default asyncWrapper(currentUser);

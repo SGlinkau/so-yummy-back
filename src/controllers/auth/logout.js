@@ -1,5 +1,5 @@
-const { asyncWrapper } = require('../../helpers/apiHelpers');
-const { auth: service } = require('../../services');
+import { asyncWrapper } from "../../helpers/apiHelpers";
+import { auth as service } from "../../services";
 
 const logout = async (req, res) => {
   const { id } = req.user;
@@ -9,4 +9,4 @@ const logout = async (req, res) => {
   res.sendStatus(204);
 };
 
-module.exports = asyncWrapper(logout);
+export default asyncWrapper(logout);

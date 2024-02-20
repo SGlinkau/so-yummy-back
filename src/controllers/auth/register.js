@@ -1,22 +1,28 @@
-const crypto = require('crypto');
-const gavatar = require('gravatar');
+import { randomUUID } from "crypto";
+import { url } from "gravatar";
 
-const { auth: service, user: userService } = require('../../services');
-const { asyncWrapper, responseData } = require('../../helpers/apiHelpers');
-const { DatabaseError } = require('../../helpers/errors');
-const { convertUserData } = require('../../helpers/convertUserData');
+import { auth as service, user as userService } from "../../services";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
+import { DatabaseError } from "../../helpers/errors";
+import { convertUserData } from "../../helpers/convertUserData";
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
   const candidate = await userService.getUserByEmail(email);
 
   if (candidate) {
-    throw new DatabaseError('Email is already in use');
+    throw new DatabaseError("Email is already in use");
   }
 
-  const avatarURL = 'https:' + gavatar.url(email);
-  const verificationToken = crypto.randomUUID();
-  const user = await service.register({ name, email, password, avatarURL, verificationToken });
+  const avatarURL = "https:" + url(email);
+  const verificationToken = randomUUID();
+  const user = await service.register({
+    name,
+    email,
+    password,
+    avatarURL,
+    verificationToken,
+  });
 
   res.status(201).json(
     responseData(
@@ -28,4 +34,4 @@ const register = async (req, res) => {
   );
 };
 
-module.exports = asyncWrapper(register);
+export default asyncWrapper(register);
