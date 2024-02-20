@@ -1,10 +1,10 @@
-const { asyncWrapper, responseData } = require("../helpers/apiHelpers");
-const {
+import { asyncWrapper, responseData } from "../helpers/apiHelpers";
+import {
   MAX_LIMIT_PER_PAGE,
   DEFAULT_LIMIT_PER_PAGE,
   DEFAULT_PAGE,
-} = require("../helpers/variables");
-const { popularRecipes: service } = require("../services");
+} from "../helpers/variables";
+import { popularRecipes as service } from "../services";
 
 const popularRecipes = async (req, res) => {
   let { page = DEFAULT_PAGE, limit = DEFAULT_LIMIT_PER_PAGE } = req.query;
@@ -22,6 +22,4 @@ const popularRecipes = async (req, res) => {
   );
 };
 
-module.exports = {
-  getRecipes: asyncWrapper(popularRecipes),
-};
+export const getRecipes = asyncWrapper(popularRecipes);
