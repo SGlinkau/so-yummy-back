@@ -1,12 +1,10 @@
-module.exports = {
-  auth: require('./auth'),
-  user: require('./user'),
-  ownRecipes: require('./ownRecipes'),
-  popularRecipes: require('./popularRecipes'),
-  achievements: require('./achievements'),
-  search: require('./search'),
-  ingredients: require('./ingredients'),
-  shoppingList: require('./shoppingList'),
-  recipes: require('./recipes'),
-  favorites: require('./favorites'),
-};
+export const auth = require("./auth");
+export const user = require("./user").default;
+export const ownRecipes = require("./ownRecipes").default;
+export const popularRecipes = require("./popularRecipes").default;
+export const achievements = require("./achievements");
+export const search = require("./search").default;
+export const ingredients = require("./ingredients").default;
+export const shoppingList = require("./shoppingList").default;
+export const recipes = require("./recipes").default;
+export const favorites = require("./favorites");

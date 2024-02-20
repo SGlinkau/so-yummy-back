@@ -1,12 +1,15 @@
-const Recipe = require('../models/recipe');
+import { aggregate } from "../models/recipe";
 
 const getRecipeByTitle = async (value, page, limit) => {
-  return await Recipe.aggregate([
-    { $match: { title: { $regex: new RegExp(value, 'i') } } },
+  return await aggregate([
+    { $match: { title: { $regex: new RegExp(value, "i") } } },
     {
       $facet: {
-        recipes: [{ $skip: parseInt((page - 1) * limit) }, { $limit: parseInt(limit) }],
-        count: [{ $count: 'total' }],
+        recipes: [
+          { $skip: parseInt((page - 1) * limit) },
+          { $limit: parseInt(limit) },
+        ],
+        count: [{ $count: "total" }],
       },
     },
     {
@@ -17,27 +20,30 @@ const getRecipeByTitle = async (value, page, limit) => {
           thumb: true,
           description: true,
         },
-        total: { $arrayElemAt: ['$count.total', 0] },
+        total: { $arrayElemAt: ["$count.total", 0] },
       },
     },
   ]);
 };
 
 const getRecipeByIngredient = async (value, page, limit) => {
-  const recipes = await Recipe.aggregate([
+  const recipes = await aggregate([
     {
       $lookup: {
-        from: 'ingredients',
-        localField: 'ingredients.id',
-        foreignField: '_id',
-        as: 'ingredients',
+        from: "ingredients",
+        localField: "ingredients.id",
+        foreignField: "_id",
+        as: "ingredients",
       },
     },
-    { $match: { 'ingredients.ttl': { $regex: new RegExp(value, 'i') } } },
+    { $match: { "ingredients.ttl": { $regex: new RegExp(value, "i") } } },
     {
       $facet: {
-        recipes: [{ $skip: parseInt((page - 1) * limit) }, { $limit: parseInt(limit) }],
-        count: [{ $count: 'total' }],
+        recipes: [
+          { $skip: parseInt((page - 1) * limit) },
+          { $limit: parseInt(limit) },
+        ],
+        count: [{ $count: "total" }],
       },
     },
     {
@@ -48,7 +54,7 @@ const getRecipeByIngredient = async (value, page, limit) => {
           thumb: true,
           description: true,
         },
-        total: { $arrayElemAt: ['$count.total', 0] },
+        total: { $arrayElemAt: ["$count.total", 0] },
       },
     },
   ]);
@@ -56,7 +62,7 @@ const getRecipeByIngredient = async (value, page, limit) => {
   return recipes;
 };
 
-module.exports = {
+export default {
   getRecipeByTitle,
   getRecipeByIngredient,
 };

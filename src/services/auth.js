@@ -1,8 +1,8 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
-const { UnAuthorizedError } = require('../helpers/errors');
-const { User } = require('../models');
-const { getUserByEmail } = require('./user');
+import { sign } from "jsonwebtoken";
+require("dotenv").config();
+import { UnAuthorizedError } from "../helpers/errors";
+import { User } from "../models";
+import { getUserByEmail } from "./user";
 
 const { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } = process.env;
 
@@ -19,14 +19,14 @@ const login = async (candidate) => {
   const user = await getUserByEmail(candidate.email);
 
   if (!user || !(await user.validPassword(candidate.password))) {
-    throw new UnAuthorizedError('Email or password is wrong');
+    throw new UnAuthorizedError("Email or password is wrong");
   }
 
   const payload = {
     id: user._id,
   };
-  const refreshToken = jwt.sign(payload, JWT_REFRESH_SECRET, { expiresIn: '7d' });
-  const accessToken = jwt.sign(payload, JWT_ACCESS_SECRET, { expiresIn: '15m' });
+  const refreshToken = sign(payload, JWT_REFRESH_SECRET, { expiresIn: "7d" });
+  const accessToken = sign(payload, JWT_ACCESS_SECRET, { expiresIn: "15m" });
 
   await user.updateOne({ refreshToken, accessToken }, { new: true });
 
@@ -46,15 +46,19 @@ const updateTokensById = async (id) => {
     id,
   };
 
-  const refreshToken = jwt.sign(payload, JWT_REFRESH_SECRET, { expiresIn: '7d' });
-  const accessToken = jwt.sign(payload, JWT_ACCESS_SECRET, { expiresIn: '15m' });
+  const refreshToken = sign(payload, JWT_REFRESH_SECRET, { expiresIn: "7d" });
+  const accessToken = sign(payload, JWT_ACCESS_SECRET, { expiresIn: "15m" });
 
-  const user = await User.findByIdAndUpdate(id, { refreshToken, accessToken }, { new: true });
+  const user = await User.findByIdAndUpdate(
+    id,
+    { refreshToken, accessToken },
+    { new: true }
+  );
 
   return { refreshToken, accessToken, user };
 };
 
-module.exports = {
+export default {
   register,
   login,
   logout,

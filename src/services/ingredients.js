@@ -1,15 +1,15 @@
-const Ingredient = require('../models/ingredient');
+import { find } from "../models/ingredient";
 
 const getIngredients = async (value) => {
   const searchQuery = {};
 
   if (value) {
-    searchQuery.ttl = { $regex: new RegExp(`^${value}`, 'i') };
+    searchQuery.ttl = { $regex: new RegExp(`^${value}`, "i") };
   }
 
-  return await Ingredient.find(searchQuery);
+  return await find(searchQuery);
 };
 
-module.exports = {
+export default {
   getIngredients,
 };
