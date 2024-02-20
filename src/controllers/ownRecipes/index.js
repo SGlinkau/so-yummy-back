@@ -1,5 +1,3 @@
-module.exports = {
-  createRecipe: require("./createRecipe"),
-  deleteRecipe: require("./deleteRecipe"),
-  getOwnRecipes: require("./getRecipes"),
-};
+export const createRecipe = require("./createRecipe").default;
+export const deleteRecipe = require("./deleteRecipe").default;
+export const getOwnRecipes = require("./getRecipes").default;
