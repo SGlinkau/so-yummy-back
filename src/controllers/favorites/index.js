@@ -1,5 +1,3 @@
-module.exports = {
-  addFavorite: require("./addFavorite"),
-  deleteFavorite: require("./deleteFavorite"),
-  getFavorite: require("./getFavorite"),
-};
+export const addFavorite = require("./addFavorite").default;
+export const deleteFavorite = require("./deleteFavorite").default;
+export const getFavorite = require("./getFavorite").default;

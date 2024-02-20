@@ -1,6 +1,6 @@
-const { favorites: service } = require('../../services');
-const { asyncWrapper, responseData } = require('../../helpers/apiHelpers');
-const { NotFoundError } = require('../../helpers/errors');
+import { favorites as service } from "../../services";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
+import { NotFoundError } from "../../helpers/errors";
 
 const deleteFavorite = async (req, res) => {
   const { id } = req.user;
@@ -17,4 +17,4 @@ const deleteFavorite = async (req, res) => {
   res.json(responseData({ recipe }, 200));
 };
 
-module.exports = asyncWrapper(deleteFavorite);
+export default asyncWrapper(deleteFavorite);

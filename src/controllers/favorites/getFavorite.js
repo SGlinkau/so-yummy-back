@@ -1,6 +1,10 @@
-const { favorites: service } = require('../../services');
-const { asyncWrapper, responseData } = require('../../helpers/apiHelpers');
-const { MAX_LIMIT_PER_PAGE, DEFAULT_LIMIT_PER_PAGE, DEFAULT_PAGE } = require('../../helpers/variables');
+import { favorites as service } from "../../services";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
+import {
+  MAX_LIMIT_PER_PAGE,
+  DEFAULT_LIMIT_PER_PAGE,
+  DEFAULT_PAGE,
+} from "../../helpers/variables";
 
 const getFavorite = async (req, res) => {
   const { id } = req.user;
@@ -11,4 +15,4 @@ const getFavorite = async (req, res) => {
 
   res.status(200).json(responseData({ ...recipes }, 200));
 };
-module.exports = asyncWrapper(getFavorite);
+export default asyncWrapper(getFavorite);

@@ -1,6 +1,6 @@
-const { favorites: service } = require('../../services');
-const { asyncWrapper, responseData } = require('../../helpers/apiHelpers');
-const { DatabaseError } = require('../../helpers/errors');
+import { favorites as service } from "../../services";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
+import { DatabaseError } from "../../helpers/errors";
 
 const addFavorite = async (req, res) => {
   const { recipeId } = req.body;
@@ -17,4 +17,4 @@ const addFavorite = async (req, res) => {
   res.status(200).json(responseData({ recipe }, 200));
 };
 
-module.exports = asyncWrapper(addFavorite);
+export default asyncWrapper(addFavorite);
