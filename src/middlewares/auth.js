@@ -1,4 +1,6 @@
-import { object, string } from "joi";
+// import { object, string } from "joi";
+import pkg from "joi";
+const { object, string } = pkg;
 import { verify } from "jsonwebtoken";
 
 import { user as service } from "../services/user.js";
@@ -24,7 +26,7 @@ const refreshSchema = object({
   refreshToken: validationFields.refreshToken.required(),
 });
 
-const auth = async (req, _res, next) => {
+export const auth = async (req, _res, next) => {
   try {
     const { authorization } = req.headers;
 

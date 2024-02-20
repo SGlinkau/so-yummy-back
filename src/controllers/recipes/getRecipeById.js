@@ -2,7 +2,7 @@ import { recipes as service } from "../../services/index.js";
 import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
 import { NotFoundError } from "../../helpers/errors.js";
 
-const getRecipeById = async (req, res) => {
+export const getRecipeById = async (req, res) => {
   const { recipeId } = req.params;
 
   const recipe = await service.getRecipeById(recipeId);

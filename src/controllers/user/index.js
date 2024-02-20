@@ -1,4 +1,4 @@
-module.exports = {
-  editProfile: require('./editProfile'),
-  addSubscription: require('./addSubscription'),
-};
+import editProfile from "./editProfile.js";
+import addSubscription from "./addSubscription.js";
+
+export { editProfile, addSubscription };

@@ -1,7 +1,7 @@
-import { aggregate } from "../models/recipe.js";
+import { RecipeModel as Recipe } from "../models/recipe.js";
 
-const getRecipeByTitle = async (value, page, limit) => {
-  return await aggregate([
+export const getRecipeByTitle = async (value, page, limit) => {
+  return await Recipe([
     { $match: { title: { $regex: new RegExp(value, "i") } } },
     {
       $facet: {
@@ -26,8 +26,8 @@ const getRecipeByTitle = async (value, page, limit) => {
   ]);
 };
 
-const getRecipeByIngredient = async (value, page, limit) => {
-  const recipes = await aggregate([
+export const getRecipeByIngredient = async (value, page, limit) => {
+  const recipes = await Recipe([
     {
       $lookup: {
         from: "ingredients",
@@ -62,7 +62,14 @@ const getRecipeByIngredient = async (value, page, limit) => {
   return recipes;
 };
 
-export default {
+// export default {
+//   getRecipeByTitle,
+//   getRecipeByIngredient,
+// };
+
+const search = {
   getRecipeByTitle,
   getRecipeByIngredient,
 };
+
+export default search;

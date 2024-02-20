@@ -1,13 +1,13 @@
 import { Router } from "express";
-import { user as controller, achievements } from "../../controllers";
-import middlewares from "../../middlewares";
+import { user as controller, achievements } from "../../controllers/index.js";
+import { middlewares } from "../../middlewares/index.js";
 const {
   user: middleware,
   auth: authMiddleware,
   uploadImage: { avatarImage },
 } = middlewares;
 
-const usersRouter = Router();
+export const usersRouter = Router();
 
 usersRouter.use(authMiddleware.auth);
 usersRouter.patch(

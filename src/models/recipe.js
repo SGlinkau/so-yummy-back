@@ -1,7 +1,7 @@
 import { Schema as _Schema, Types, model } from "mongoose";
 const Schema = _Schema;
 
-const recipe = new Schema(
+export const Recipe = new Schema(
   {
     title: {
       type: String,
@@ -82,6 +82,6 @@ const recipe = new Schema(
   { versionKey: false, timestamps: true }
 );
 
-const Recipe = model("recipe", recipe);
+export const RecipeModel = model("recipe", Recipe);
 
-export default Recipe;
+export default RecipeModel;

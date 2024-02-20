@@ -56,6 +56,6 @@ schema.methods.validPassword = async function (password) {
   return compare(password, this.password);
 };
 
-const UserModel = model("user", schema);
+export const User = model("User", schema);
 
-export default UserModel;
+export default User;

@@ -3,7 +3,7 @@ import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
 import { NotFoundError } from "../../helpers/errors.js";
 import { convertShoppingItemData } from "../../helpers/convertShoppingItemData.js";
 
-const removeFromShoppingList = async (req, res) => {
+export const removeFromShoppingList = async (req, res) => {
   const { id } = req.params;
   const { id: userId } = req.user;
 

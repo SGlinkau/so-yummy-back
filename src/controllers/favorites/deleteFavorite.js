@@ -2,7 +2,7 @@ import { favorites as service } from "../../services/index.js";
 import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
 import { NotFoundError } from "../../helpers/errors.js";
 
-const deleteFavorite = async (req, res) => {
+export const deleteFavorite = async (req, res) => {
   const { id } = req.user;
   const { recipeId } = req.params;
 

@@ -1,35 +1,35 @@
 import { User } from "../models/user.js";
 
 // Get user by email
-const getUserByEmail = async (email) => {
+export const getUserByEmail = async (email) => {
   const user = await User.findOne({ email });
 
   return user;
 };
 
 // Get user by email verification token
-const getUserByVerificationToken = async (verificationToken) => {
+export const getUserByVerificationToken = async (verificationToken) => {
   const user = await User.findOne({ verificationToken });
 
   return user;
 };
 
 // Get user by id
-const getUserById = async (id) => {
+export const getUserById = async (id) => {
   const user = await User.findById(id);
 
   return user;
 };
 
 // Get user by refresh token
-const getUserByRefreshToken = async (refreshToken) => {
+export const getUserByRefreshToken = async (refreshToken) => {
   const user = await User.findOne({ refreshToken });
 
   return user;
 };
 
 // updateUserProfileData
-const updateUserProfile = async (id, data) => {
+export const updateUserProfile = async (id, data) => {
   const user = await User.findByIdAndUpdate(id, data, {
     new: true,
     runValidators: true,
@@ -38,7 +38,7 @@ const updateUserProfile = async (id, data) => {
   return user;
 };
 
-const checkSubscriptionStatus = async (id, email) => {
+export const checkSubscriptionStatus = async (id, email) => {
   const [currentUserProfile, userSubscribedByEmail] = await Promise.all([
     User.findById(id),
     User.findOne({ subscription: email }),
@@ -47,7 +47,7 @@ const checkSubscriptionStatus = async (id, email) => {
   return { currentUserProfile, userSubscribedByEmail };
 };
 
-export default {
+export const user = {
   getUserByEmail,
   getUserByRefreshToken,
   getUserByVerificationToken,
@@ -55,3 +55,5 @@ export default {
   updateUserProfile,
   checkSubscriptionStatus,
 };
+
+export default user;

@@ -24,6 +24,12 @@ const get = async (page, limit) => {
   return recipes[0];
 };
 
-export default {
+// export default {
+//   get,
+// };
+
+const popularRecipes = {
   get,
 };
+
+export default popularRecipes;

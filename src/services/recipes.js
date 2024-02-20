@@ -190,9 +190,19 @@ const getRecipesByCategories = async (categories) => {
 
   return result[0];
 };
-export default {
+
+// export default {
+//   getRecipes,
+//   getRecipeById,
+//   getRecipesByCategoryName,
+//   getRecipesByCategories,
+// };
+
+const recipes = {
   getRecipes,
   getRecipeById,
   getRecipesByCategoryName,
   getRecipesByCategories,
 };
+
+export default recipes;

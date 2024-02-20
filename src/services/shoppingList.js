@@ -1,7 +1,7 @@
-import { ShoppingList } from "../models/shoppingList.js";
+import { ShoppingListModel } from "../models/shoppingList.js";
 
-const getAll = async (id) => {
-  const shoppingList = await ShoppingList.aggregate([
+export const getAll = async (id) => {
+  const shoppingList = await ShoppingListModel.aggregate([
     {
       $match: {
         owner: id,
@@ -51,7 +51,7 @@ const getAll = async (id) => {
   return shoppingList[0];
 };
 
-const getByUserId = async (id, limit, page) => {
+export const getByUserId = async (id, limit, page) => {
   const shoppingList = await ShoppingList.aggregate([
     {
       $match: {
@@ -118,14 +118,14 @@ const getByUserId = async (id, limit, page) => {
   return shoppingList[0];
 };
 
-const add = async (data) => {
+export const add = async (data) => {
   const item = new ShoppingList(data);
   await item.save();
 
   return item.populate("ingredient", "_id ttl thb");
 };
 
-const removeById = async (id, owner) => {
+export const removeById = async (id, owner) => {
   const item = await ShoppingList.findOneAndRemove({ _id: id, owner }).populate(
     "ingredient",
     "_d ttl thb"
@@ -134,9 +134,18 @@ const removeById = async (id, owner) => {
   return item;
 };
 
-export default {
+// export default {
+//   getAll,
+//   getByUserId,
+//   add,
+//   removeById,
+// };
+
+const shoppingList = {
   getAll,
   getByUserId,
   add,
   removeById,
 };
+
+export default shoppingList;

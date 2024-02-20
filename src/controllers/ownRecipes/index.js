@@ -1,3 +1,5 @@
-export const createRecipe = require("./createRecipe").default;
-export const deleteRecipe = require("./deleteRecipe").default;
-export const getOwnRecipes = require("./getRecipes").default;
+import createRecipe from "./createRecipe.js";
+import deleteRecipe from "./deleteRecipe.js";
+import getOwnRecipes from "./getRecipes.js";
+
+export { createRecipe, deleteRecipe, getOwnRecipes };

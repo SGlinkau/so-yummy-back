@@ -1,8 +1,11 @@
-const RequestFieldType = Object.freeze({
-  body: "body",
-  query: "query",
-  params: "params",
-  file: "file",
-});
+export const body = "body";
+export const query = "query";
+export const params = "params";
+export const file = "file";
 
-export default RequestFieldType;
+export const RequestFieldType = {
+  body,
+  query,
+  params,
+  file,
+};

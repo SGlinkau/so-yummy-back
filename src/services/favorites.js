@@ -1,6 +1,6 @@
-import { Recipe } from '../models/recipe.js';
+import { Recipe } from "../models/recipe.js";
 
-const getFavoritesRecipes = async (userId, page, limit) => {
+export const getFavoritesRecipes = async (userId, page, limit) => {
   const pipeline = [
     {
       $match: {
@@ -29,7 +29,7 @@ const getFavoritesRecipes = async (userId, page, limit) => {
   return results[0];
 };
 
-const addRecipeToFavorite = async (recipeId, userId) => {
+export const addRecipeToFavorite = async (recipeId, userId) => {
   const recipe = await Recipe.findOneAndUpdate(
     { _id: recipeId },
     { $push: { favorites: userId } },
@@ -47,7 +47,7 @@ const addRecipeToFavorite = async (recipeId, userId) => {
   return recipe;
 };
 
-const deleteRecipeFromFavorites = async (recipeId, userId) => {
+export const deleteRecipeFromFavorites = async (recipeId, userId) => {
   const recipe = await Recipe.findOneAndUpdate(
     { _id: recipeId },
     { $pull: { favorites: userId } },
@@ -59,12 +59,11 @@ const deleteRecipeFromFavorites = async (recipeId, userId) => {
     thumb: 1,
     preview: 1,
     time: 1,
-export default });
+  });
 
   return recipe;
-
-}
-const findFavoriteRecipeByUserId = async (recipeId, userId) => {
+};
+export const findFavoriteRecipeByUserId = async (recipeId, userId) => {
   const recipe = await Recipe.findOne({
     _id: recipeId,
     favorites: { $in: [userId] },
@@ -73,9 +72,11 @@ const findFavoriteRecipeByUserId = async (recipeId, userId) => {
   return recipe;
 };
 
-module.exports = {
+const favorites = {
   getFavoritesRecipes,
   deleteRecipeFromFavorites,
   addRecipeToFavorite,
   findFavoriteRecipeByUserId,
 };
+
+export default favorites;

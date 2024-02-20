@@ -1,5 +1,7 @@
-import { sign } from "jsonwebtoken";
-require("dotenv").config();
+import pkg from "jsonwebtoken";
+const { sign } = pkg;
+import dotenv from "dotenv";
+dotenv.config();
 import { UnAuthorizedError } from "../helpers/errors.js";
 import { User } from "../models/user.js";
 import { getUserByEmail } from "./user.js";
@@ -7,7 +9,7 @@ import { getUserByEmail } from "./user.js";
 const { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } = process.env;
 
 // Registrer user
-const register = async (candidate) => {
+export const register = async (candidate) => {
   const user = new User(candidate);
   await user.save();
 
@@ -15,7 +17,7 @@ const register = async (candidate) => {
 };
 
 // Login
-const login = async (candidate) => {
+export const login = async (candidate) => {
   const user = await getUserByEmail(candidate.email);
 
   if (!user || !(await user.validPassword(candidate.password))) {
@@ -34,14 +36,14 @@ const login = async (candidate) => {
 };
 
 // Logout
-const logout = async (id) => {
+export const logout = async (id) => {
   await User.findByIdAndUpdate(id, { accessToken: null, refreshToken: null });
 
   return true;
 };
 
 // Generate ne tokens and update token by user id
-const updateTokensById = async (id) => {
+export const updateTokensById = async (id) => {
   const payload = {
     id,
   };
@@ -58,9 +60,18 @@ const updateTokensById = async (id) => {
   return { refreshToken, accessToken, user };
 };
 
-export default {
+// export default {
+//   register,
+//   login,
+//   logout,
+//   updateTokensById,
+// };
+
+const auth = {
   register,
   login,
   logout,
   updateTokensById,
 };
+
+export default auth;

@@ -1,3 +1,5 @@
-export const addFavorite = require("./addFavorite").default;
-export const deleteFavorite = require("./deleteFavorite").default;
-export const getFavorite = require("./getFavorite").default;
+import addFavorite from "./addFavorite.js";
+import deleteFavorite from "./deleteFavorite.js";
+import getFavorite from "./getFavorite.js";
+
+export { addFavorite, deleteFavorite, getFavorite };

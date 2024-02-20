@@ -1,6 +1,6 @@
-const { user: service } = require('../../services');
-const { asyncWrapper, responseData } = require('../../helpers/apiHelpers');
-const { convertUserData } = require('../../helpers/convertUserData');
+import { user as service } from "../../services/index.js";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
+import { convertUserData } from "../../helpers/convertUserData.js";
 
 const editProfile = async (req, res) => {
   const { id } = req.user;
@@ -41,4 +41,4 @@ const editProfile = async (req, res) => {
   );
 };
 
-module.exports = asyncWrapper(editProfile);
+export default asyncWrapper(editProfile);

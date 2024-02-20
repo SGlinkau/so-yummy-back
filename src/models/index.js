@@ -1,4 +1,6 @@
-export const User = require("./user").default;
-export const Recipe = require("./recipe").default;
-export const Ingredient = require("./ingredient").default;
-export const ShoppingList = require("./shoppingList").default;
+import User from "./user.js";
+import Recipe from "./recipe.js";
+import Ingredient from "./ingredient.js";
+import ShoppingList from "./shoppingList.js";
+
+export { User, Recipe, Ingredient, ShoppingList };

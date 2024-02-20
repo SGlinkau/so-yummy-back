@@ -4,7 +4,7 @@ import { MAX_LIMIT_PER_PAGE } from "../../helpers/variables.js";
 import { DEFAULT_LIMIT_PER_PAGE } from "../../helpers/variables.js";
 import { DEFAULT_PAGE } from "../../helpers/variables.js";
 
-const getAllRecipes = async (req, res) => {
+export const getAllRecipes = async (req, res) => {
   const { limit = DEFAULT_LIMIT_PER_PAGE, page = DEFAULT_PAGE } = req.query;
   const pageLimit =
     parseInt(limit) > MAX_LIMIT_PER_PAGE ? MAX_LIMIT_PER_PAGE : parseInt(limit);

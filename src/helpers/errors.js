@@ -1,4 +1,4 @@
-class BaseError extends Error {
+export class BaseError extends Error {
   constructor(message = "Unknown error") {
     super(message);
     this._code = 500;
@@ -17,7 +17,7 @@ class BaseError extends Error {
   }
 }
 
-class ValidationError extends BaseError {
+export class ValidationError extends BaseError {
   constructor(message = "Validation error") {
     super(message);
 
@@ -27,7 +27,7 @@ class ValidationError extends BaseError {
   }
 }
 
-class NotFoundError extends BaseError {
+export class NotFoundError extends BaseError {
   constructor(message = "Not found") {
     super(message);
     this._code = 404;
@@ -36,7 +36,7 @@ class NotFoundError extends BaseError {
   }
 }
 
-class RouteNotFoundError extends BaseError {
+export class RouteNotFoundError extends BaseError {
   constructor() {
     super(`Route not found`);
 
@@ -46,7 +46,7 @@ class RouteNotFoundError extends BaseError {
   }
 }
 
-class DatabaseError extends BaseError {
+export class DatabaseError extends BaseError {
   constructor(message = "Conflict") {
     super(message);
     this._code = 409;
@@ -55,7 +55,7 @@ class DatabaseError extends BaseError {
   }
 }
 
-class UnAuthorizedError extends BaseError {
+export class UnAuthorizedError extends BaseError {
   constructor(message = "Unauthorized error") {
     super(message);
     this._code = 401;
@@ -64,7 +64,7 @@ class UnAuthorizedError extends BaseError {
   }
 }
 
-class ForbiddenError extends BaseError {
+export class ForbiddenError extends BaseError {
   constructor(message = "Forbidden errror") {
     super(message);
     this._code = 403;
@@ -73,7 +73,7 @@ class ForbiddenError extends BaseError {
   }
 }
 
-class ServerError extends BaseError {
+export class ServerError extends BaseError {
   constructor(message = "Initial Server error") {
     super(message);
     this._code = 500;

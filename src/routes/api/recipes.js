@@ -5,11 +5,11 @@ import { getNewest } from "../../controllers/recipes/getNewest.js";
 import { getRecipesByCategory } from "../../controllers/recipes/getRecipesByCategory.js";
 import { getRecipeById } from "../../controllers/recipes/getRecipeById.js";
 
-import { ownRecipes } from "../../controllers/";
-import { popularRecipes } from "../../controllers";
-import { search } from "../../controllers";
-import { favorites } from "../../controllers";
-import { middlewares } from "../../middlewares";
+import { ownRecipes } from "../../controllers/index.js";
+import { popularRecipes } from "../../controllers/index.js";
+import { search } from "../../controllers/index.js";
+import { favorites } from "../../controllers/index.js";
+import { middlewares } from "../../middlewares/index.js";
 const {
   auth: authMiddleware,
   recipe: middleware,
@@ -19,8 +19,8 @@ const {
   newest: newestMiddleware,
   uploadImage: { recipeImage },
 } = middlewares;
-import { body, params } from "../../types/requestFieldType";
-const routerRecipe = Router();
+import { body, params } from "../../types/requestFieldType.js";
+export const routerRecipe = Router();
 
 routerRecipe.use(authMiddleware.auth);
 

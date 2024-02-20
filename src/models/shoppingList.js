@@ -1,7 +1,7 @@
 import mongoose, { SchemaTypes, model } from "mongoose";
 const { Schema } = mongoose;
 
-const shoppingListSchema = new Schema(
+export const shoppingListSchema = new Schema(
   {
     value: {
       type: String,
@@ -26,6 +26,6 @@ const shoppingListSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
-const ShoppingListModel = model("shopping-list", shoppingListSchema);
+export const ShoppingListModel = model("shopping-list", shoppingListSchema);
 
 export default ShoppingListModel;

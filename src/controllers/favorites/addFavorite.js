@@ -1,8 +1,8 @@
-import { favorites as service } from "../../service/index.js";
+import { favorites as service } from "../../services/index.js";
 import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
 import { DatabaseError } from "../../helpers/errors.js";
 
-const addFavorite = async (req, res) => {
+export const addFavorite = async (req, res) => {
   const { recipeId } = req.body;
   const { id } = req.user;
 

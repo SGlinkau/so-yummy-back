@@ -1,9 +1,12 @@
 import { Router } from "express";
-import { authenticate } from "passport";
-import { auth as controller } from "../../controllers";
-import { auth as middleware } from "../../middlewares";
+// ZAMIENIONO IMPORT Z PASSPORT NA IMPORT PKG I INNY IMPORT
+import pkg from "passport";
+const { authenticate } = pkg;
+// import { authenticate } from "passport";
+import { auth as controller } from "../../controllers/index.js";
+import { auth as middleware } from "../../middlewares/index.js";
 
-const authRouter = Router();
+export const authRouter = Router();
 
 authRouter.post("/register", middleware.register, controller.register);
 authRouter.post("/login", middleware.login, controller.login);

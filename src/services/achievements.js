@@ -1,6 +1,6 @@
-import { User } from "../models";
+import { User } from "../models/index.js";
 
-const achievements = async (id) => {
+export const achievements = async (id) => {
   const result = await User.aggregate([
     {
       $match: { _id: id },

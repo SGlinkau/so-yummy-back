@@ -1,10 +1,23 @@
-export const auth = require("./auth");
-export const user = require("./user").default;
-export const ownRecipes = require("./ownRecipes").default;
-export const popularRecipes = require("./popularRecipes").default;
-export const achievements = require("./achievements");
-export const search = require("./search").default;
-export const ingredients = require("./ingredients").default;
-export const shoppingList = require("./shoppingList").default;
-export const recipes = require("./recipes").default;
-export const favorites = require("./favorites");
+import auth from "./auth.js";
+import user from "./user.js";
+import ownRecipes from "./ownRecipes.js";
+import popularRecipes from "./popularRecipes.js";
+import achievements from "./achievements.js";
+import search from "./search.js";
+import ingredients from "./ingredients.js";
+import shoppingList from "./shoppingList.js";
+import recipes from "./recipes.js";
+import favorites from "./favorites.js";
+
+export {
+  auth,
+  user,
+  ownRecipes,
+  popularRecipes,
+  achievements,
+  search,
+  ingredients,
+  shoppingList,
+  recipes,
+  favorites,
+};

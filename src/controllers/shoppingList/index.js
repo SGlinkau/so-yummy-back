@@ -1,3 +1,5 @@
-export const get = require('./getShoppingList');
-export const add = require('./addToShoppingList');
-export const delete = require('./removeFromShoppingList').default;
+import get from "./getShoppingList.js";
+import add from "./addToShoppingList.js";
+import removeFromShoppingList from "./removeFromShoppingList.js";
+
+export { get, add, removeFromShoppingList };

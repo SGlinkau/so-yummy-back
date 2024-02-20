@@ -23,6 +23,6 @@ const ingredient = new Schema(
   { timestamps: true }
 );
 
-const Ingredient = model("ingredient", ingredient);
+export const Ingredient = model("ingredient", ingredient);
 
 export default Ingredient;

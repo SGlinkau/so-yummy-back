@@ -44,8 +44,16 @@ const get = async (owner, page, limit) => {
   return results[0];
 };
 
-export default {
+// export default {
+//   create,
+//   deleteById,
+//   get,
+// };
+
+const ownRecipes = {
   create,
   deleteById,
   get,
 };
+
+export default ownRecipes;

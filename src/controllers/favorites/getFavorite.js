@@ -4,7 +4,7 @@ import { MAX_LIMIT_PER_PAGE } from "../../helpers/variables.js";
 import { DEFAULT_LIMIT_PER_PAGE } from "../../helpers/variables.js";
 import { DEFAULT_PAGE } from "../../helpers/variables.js";
 
-const getFavorite = async (req, res) => {
+export const getFavorite = async (req, res) => {
   const { id } = req.user;
   let { page = DEFAULT_PAGE, limit = DEFAULT_LIMIT_PER_PAGE } = req.query;
   limit = +limit > MAX_LIMIT_PER_PAGE ? MAX_LIMIT_PER_PAGE : +limit;

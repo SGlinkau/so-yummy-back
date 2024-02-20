@@ -1,7 +1,7 @@
 import { recipes as service } from "../../services/index.js";
 import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
 
-const getNewest = async (req, res) => {
+export const getNewest = async (req, res) => {
   const categories = req.query.categories.split(",");
 
   const result = await service.getRecipesByCategories(categories);

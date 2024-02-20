@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { shoppingList as controller } from "../../controllers";
+import { shoppingList as controller } from "../../controllers/index.js";
 import {
   shoppingList as middleware,
   auth as authMiddleware,
   pagination as paginationMiddleware,
-} from "../../middlewares";
+} from "../../middlewares/index.js";
 
-const shoppingListRouter = Router();
+export const shoppingListRouter = Router();
 
 shoppingListRouter.use(authMiddleware.auth);
 shoppingListRouter
