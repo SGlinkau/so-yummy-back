@@ -1,9 +1,9 @@
-const { isValidObjectId } = require("mongoose");
-const Joi = require("joi");
-const { RequestFieldType, SearchType } = require("../types");
-const { ValidationError } = require("./errors");
-const cloudinary = require("cloudinary");
-const { CATEGORIES } = require("./variables");
+import { isValidObjectId } from "mongoose";
+import { string, number } from "joi";
+import { RequestFieldType, SearchType } from "../types";
+import { ValidationError } from "./errors";
+import { v2 } from "cloudinary";
+import { CATEGORIES } from "./variables";
 
 const idValidation = (value, helpers) => {
   // Use error to return an existing error code
@@ -17,10 +17,10 @@ const idValidation = (value, helpers) => {
 
 // Validation rules
 const validationFields = {
-  id: Joi.string().custom(idValidation, "Invalid id"),
-  name: Joi.string().min(1).max(16),
-  email: Joi.string().email({ tlds: { allow: false } }),
-  password: Joi.string()
+  id: string().custom(idValidation, "Invalid id"),
+  name: string().min(1).max(16),
+  email: string().email({ tlds: { allow: false } }),
+  password: string()
     .min(6)
     .max(16)
     .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/)
@@ -30,21 +30,21 @@ const validationFields = {
       "string.pattern.base":
         "At least one uppercase letter, one lowercase letter and one number",
     }),
-  refreshToken: Joi.string(),
-  title: Joi.string().min(3).max(30),
-  category: Joi.string().equal(...Object.values(CATEGORIES)),
-  instructions: Joi.string().min(10),
-  description: Joi.string().min(8),
-  time: Joi.string().min(1),
-  ingredients: Joi.string(),
+  refreshToken: string(),
+  title: string().min(3).max(30),
+  category: string().equal(...Object.values(CATEGORIES)),
+  instructions: string().min(10),
+  description: string().min(8),
+  time: string().min(1),
+  ingredients: string(),
   // Search, ingredients
-  type: Joi.string().equal(...Object.values(SearchType)),
-  value: Joi.string().min(1).max(30),
+  type: string().equal(...Object.values(SearchType)),
+  value: string().min(1).max(30),
   // ShoppingList
-  ingredientId: Joi.string().custom(idValidation, "Invalid id"),
+  ingredientId: string().custom(idValidation, "Invalid id"),
   // Pages
-  page: Joi.number().integer().min(1),
-  limit: Joi.number().integer().min(1),
+  page: number().integer().min(1),
+  limit: number().integer().min(1),
 };
 
 // Email validation for mongoose schema
@@ -70,14 +70,14 @@ const validationRequestWithImg =
     const validationResult = schema.validate(req[type]);
 
     if (validationResult.error) {
-      cloudinary.v2.uploader.destroy(req.file.filename, "image");
+      v2.uploader.destroy(req.file.filename, "image");
       throw new ValidationError(validationResult.error.message);
     }
 
     next();
   };
 
-module.exports = {
+export default {
   idValidation,
   validationFields,
   isEmailValid,

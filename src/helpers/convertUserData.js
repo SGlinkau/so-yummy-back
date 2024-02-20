@@ -7,4 +7,4 @@ const convertUserData = (user) => {
   return { id, name, email, subscription, avatarURL };
 };
 
-module.exports = { convertUserData };
+export default { convertUserData };

@@ -1,9 +1,9 @@
 class BaseError extends Error {
-  constructor(message = 'Unknown error') {
+  constructor(message = "Unknown error") {
     super(message);
     this._code = 500;
-    this._status = 'fail';
-    this._data = 'Internal server error';
+    this._status = "fail";
+    this._data = "Internal server error";
   }
 
   get code() {
@@ -18,21 +18,21 @@ class BaseError extends Error {
 }
 
 class ValidationError extends BaseError {
-  constructor(message = 'Validation error') {
+  constructor(message = "Validation error") {
     super(message);
 
     this._code = 400;
-    this._status = 'error';
-    this._data = 'Validation error';
+    this._status = "error";
+    this._data = "Validation error";
   }
 }
 
 class NotFoundError extends BaseError {
-  constructor(message = 'Not found') {
+  constructor(message = "Not found") {
     super(message);
     this._code = 404;
-    this._status = 'error';
-    this._data = 'Not found';
+    this._status = "error";
+    this._data = "Not found";
   }
 }
 
@@ -41,48 +41,48 @@ class RouteNotFoundError extends BaseError {
     super(`Route not found`);
 
     this._code = 404;
-    this._status = 'error';
-    this._data = 'Not found';
+    this._status = "error";
+    this._data = "Not found";
   }
 }
 
 class DatabaseError extends BaseError {
-  constructor(message = 'Conflict') {
+  constructor(message = "Conflict") {
     super(message);
     this._code = 409;
-    this._status = 'error';
-    this._data = 'Conflict';
+    this._status = "error";
+    this._data = "Conflict";
   }
 }
 
 class UnAuthorizedError extends BaseError {
-  constructor(message = 'Unauthorized error') {
+  constructor(message = "Unauthorized error") {
     super(message);
     this._code = 401;
-    this._status = 'error';
-    this._data = 'Unauthorized';
+    this._status = "error";
+    this._data = "Unauthorized";
   }
 }
 
 class ForbiddenError extends BaseError {
-  constructor(message = 'Forbidden errror') {
+  constructor(message = "Forbidden errror") {
     super(message);
     this._code = 403;
-    this._status = 'error';
-    this._data = 'Forbidden';
+    this._status = "error";
+    this._data = "Forbidden";
   }
 }
 
 class ServerError extends BaseError {
-  constructor(message = 'Initial Server error') {
+  constructor(message = "Initial Server error") {
     super(message);
     this._code = 500;
-    this._status = 'fail';
-    this._data = 'Internal Server Error';
+    this._status = "fail";
+    this._data = "Internal Server Error";
   }
 }
 
-module.exports = {
+export default {
   BaseError,
   DatabaseError,
   NotFoundError,
