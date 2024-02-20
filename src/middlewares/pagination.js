@@ -1,12 +1,13 @@
-const Joi = require('joi');
-const { validationFields, validationRequest } = require('../helpers/validation');
-const { RequestFieldType } = require('../types');
+import { object } from "joi";
+import { validationFields, validationRequest } from "../helpers/validation";
+import { RequestFieldType } from "../types";
 
-const paginationSchema = Joi.object({
+const paginationSchema = object({
   page: validationFields.page.optional(),
   limit: validationFields.limit.optional(),
 });
 
-module.exports = {
-  pagination: validationRequest(paginationSchema, RequestFieldType.query),
-};
+export const pagination = validationRequest(
+  paginationSchema,
+  RequestFieldType.query
+);

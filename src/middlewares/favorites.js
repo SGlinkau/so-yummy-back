@@ -1,10 +1,10 @@
-const Joi = require('joi');
-const { validationFields, validationRequest } = require('../helpers/validation');
+import { object } from "joi";
+import { validationFields, validationRequest } from "../helpers/validation";
 
-const favoritesSchema = Joi.object({
+const favoritesSchema = object({
   recipeId: validationFields.id.required(),
 });
 
-module.exports = {
-  recipeId: (type) => validationRequest(favoritesSchema, type),
-};
+export function recipeId(type) {
+  return validationRequest(favoritesSchema, type);
+}

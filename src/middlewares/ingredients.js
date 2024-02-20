@@ -1,12 +1,10 @@
-const Joi = require('joi');
-const { validationFields, validationRequest } = require('../helpers/validation');
+import { object } from "joi";
+import { validationFields, validationRequest } from "../helpers/validation";
 
-const RequestFieldType = require('../types/requestFieldType');
+import { query } from "../types/requestFieldType";
 
-const querySchema = Joi.object({
+const querySchema = object({
   value: validationFields.value.optional(),
 });
 
-module.exports = {
-  getIngredients: validationRequest(querySchema, RequestFieldType.query),
-};
+export const getIngredients = validationRequest(querySchema, query);

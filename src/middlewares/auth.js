@@ -1,29 +1,26 @@
-const Joi = require("joi");
-const jwt = require("jsonwebtoken");
+import { object, string } from "joi";
+import { verify } from "jsonwebtoken";
 
-const { user: service } = require("../services");
-const { UnAuthorizedError } = require("../helpers/errors");
-const { convertUserData } = require("../helpers/convertUserData");
-const {
-  validationFields,
-  validationRequest,
-} = require("../helpers/validation");
-const { RequestFieldType } = require("../types");
+import { user as service } from "../services";
+import { UnAuthorizedError } from "../helpers/errors";
+import { convertUserData } from "../helpers/convertUserData";
+import { validationFields, validationRequest } from "../helpers/validation";
+import { RequestFieldType } from "../types";
 
 const { JWT_ACCESS_SECRET } = process.env;
 
-const loginSchema = Joi.object({
+const loginSchema = object({
   email: validationFields.email.required(),
-  password: Joi.string().min(1).required(),
+  password: string().min(1).required(),
 });
 
-const registerSchema = Joi.object({
+const registerSchema = object({
   name: validationFields.name.required(),
   email: validationFields.email.required(),
   password: validationFields.password.required(),
 });
 
-const refreshSchema = Joi.object({
+const refreshSchema = object({
   refreshToken: validationFields.refreshToken.required(),
 });
 
@@ -40,7 +37,7 @@ const auth = async (req, _res, next) => {
     if (!token) {
       return next(new UnAuthorizedError("No token provided"));
     }
-    const payload = jwt.verify(token, JWT_ACCESS_SECRET);
+    const payload = verify(token, JWT_ACCESS_SECRET);
 
     const user = await service.getUserById(payload.id);
 
@@ -56,7 +53,7 @@ const auth = async (req, _res, next) => {
   }
 };
 
-module.exports = {
+export default {
   register: validationRequest(registerSchema, RequestFieldType.body),
   login: validationRequest(loginSchema, RequestFieldType.body),
   refresh: validationRequest(refreshSchema, RequestFieldType.body),

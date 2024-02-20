@@ -1,14 +1,12 @@
-module.exports = {
-  error: require("./errors"),
-  auth: require("./auth"),
-  recipe: require("./recipe"),
-  googleAuth: require("./googleAuth"),
-  search: require("./search"),
-  ingredients: require("./ingredients"),
-  pagination: require("./pagination"),
-  user: require("./user"),
-  uploadImage: require("./uploadImage"),
-  shoppingList: require("./shoppingList"),
-  favorites: require("./favorites"),
-  newest: require("./newest"),
-};
+export const error = require("./errors");
+export const auth = require("./auth");
+export const recipe = require("./recipe");
+export const googleAuth = require("./googleAuth");
+export const search = require("./search");
+export const ingredients = require("./ingredients");
+export const pagination = require("./pagination");
+export const user = require("./user");
+export const uploadImage = require("./uploadImage");
+export const shoppingList = require("./shoppingList");
+export const favorites = require("./favorites");
+export const newest = require("./newest");
