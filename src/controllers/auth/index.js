@@ -1,8 +1,6 @@
-module.exports = {
-  register: require('./register'),
-  login: require('./login'),
-  logout: require('./logout'),
-  current: require('./current'),
-  refresh: require('./refresh'),
-  google: require('./google'),
-};
+export const register = require("./register").default;
+export const login = require("./login").default;
+export const logout = require("./logout").default;
+export const current = require("./current").default;
+export const refresh = require("./refresh").default;
+export const google = require("./google").default;
