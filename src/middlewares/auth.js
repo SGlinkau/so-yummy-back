@@ -1,6 +1,6 @@
 // import { object, string } from "joi";
-import pkg from "joi";
-const { object, string } = pkg;
+import Joi from "joi";
+// const { object, string } = pkg;
 import { verify } from "jsonwebtoken";
 
 import { user as service } from "../services/user.js";
@@ -10,19 +10,20 @@ import { validationFields, validationRequest } from "../helpers/validation.js";
 import { RequestFieldType } from "../types/requestFieldType.js";
 
 const { JWT_ACCESS_SECRET } = process.env;
+const { object, string } = Joi;
 
-const loginSchema = object({
+const loginSchema = Joi.object({
   email: validationFields.email.required(),
-  password: string().min(1).required(),
+  password: Joi.string().min(1).required(),
 });
 
-const registerSchema = object({
+const registerSchema = Joi.object({
   name: validationFields.name.required(),
   email: validationFields.email.required(),
   password: validationFields.password.required(),
 });
 
-const refreshSchema = object({
+const refreshSchema = Joi.object({
   refreshToken: validationFields.refreshToken.required(),
 });
 

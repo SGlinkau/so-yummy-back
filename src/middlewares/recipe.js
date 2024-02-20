@@ -1,13 +1,14 @@
 // import { object } from "joi";
-import pkg from "joi";
-const { object } = pkg;
-
-import { RequestFieldType } from "../types/index.js";
+// import pkg from "joi";
+// const { object } = pkg;
+import Joi from "joi";
+import { RequestFieldType } from "../types/requestFieldType.js";
 import { validationFields } from "../helpers/validation.js";
 import { validationRequest } from "../helpers/validation.js";
 import { validationRequestWithImg } from "../helpers/validation.js";
 
-const recipeSchema = object({
+const { object } = Joi;
+const recipeSchema = Joi.object({
   title: validationFields.title.required(),
   category: validationFields.category.required(),
   instructions: validationFields.instructions.required(),
@@ -16,11 +17,11 @@ const recipeSchema = object({
   ingredients: validationFields.ingredients.required(),
 });
 
-const recipeIdSchema = object({
+const recipeIdSchema = Joi.object({
   recipeId: validationFields.id.required(),
 });
 
-const recipeCategoryNameSchema = object({
+const recipeCategoryNameSchema = Joi.object({
   categoryName: validationFields.category.required(),
 });
 

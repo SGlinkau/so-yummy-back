@@ -9,3 +9,5 @@ export const RequestFieldType = {
   params,
   file,
 };
+
+export default RequestFieldType;
