@@ -3,16 +3,14 @@ import logger from "morgan";
 import cors from "cors";
 import { serve, setup } from "swagger-ui-express";
 import swaggerDocument from "../swagger.json";
-import { responseError } from "./helpers/apiHelpers";
-import { RouteNotFoundError } from "./helpers/errors";
-import { error as errorMiddleware } from "./middlewares";
-import {
-  auth,
-  ingredients,
-  users,
-  shoppingListRouter,
-  recipes,
-} from "./routes/api";
+import { responseError } from "./helpers/apiHelpers.js";
+import { RouteNotFoundError } from "./helpers/errors.js";
+import { errorMiddleware } from "./middlewares/errors.js";
+import { auth } from "./routes/api/auth.js";
+import { ingredients } from "./routes/api/ingredients.js";
+import { users } from "./routes/api/users.js";
+import { shoppingListRouter } from "./routes/api/shoppingList.js";
+import { recipes } from "./routes/api/recipes.js";
 
 const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
