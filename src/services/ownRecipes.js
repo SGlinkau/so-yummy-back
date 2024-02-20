@@ -1,6 +1,6 @@
 import { v2 } from "cloudinary";
 
-import { Recipe } from "../models";
+import { Recipe } from "../models/recipe.js";
 
 const create = async (data) => {
   const recipe = await Recipe.create(data);

@@ -1,6 +1,6 @@
-import { favorites as service } from "../../services";
-import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
-import { NotFoundError } from "../../helpers/errors";
+import { favorites as service } from "../../services/index.js";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
+import { NotFoundError } from "../../helpers/errors.js";
 
 const deleteFavorite = async (req, res) => {
   const { id } = req.user;

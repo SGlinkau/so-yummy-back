@@ -1,10 +1,8 @@
-import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
-import { ownRecipes as service } from "../../services";
-import {
-  MAX_LIMIT_PER_PAGE,
-  DEFAULT_LIMIT_PER_PAGE,
-  DEFAULT_PAGE,
-} from "../../helpers/variables";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
+import { ownRecipes as service } from "../../services/index.js";
+import { MAX_LIMIT_PER_PAGE } from "../../helpers/variables.js";
+import { DEFAULT_LIMIT_PER_PAGE } from "../../helpers/variables.js";
+import { DEFAULT_PAGE } from "../../helpers/variables.js";
 
 const getOwnRecipes = async (req, res) => {
   const { id: owner } = req.user;

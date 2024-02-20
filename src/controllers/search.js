@@ -1,11 +1,9 @@
-import { search as service } from "../services";
-import { asyncWrapper, responseData } from "../helpers/apiHelpers";
-import { SearchType } from "../types";
-import {
-  MAX_LIMIT_PER_PAGE,
-  DEFAULT_LIMIT_PER_PAGE,
-  DEFAULT_PAGE,
-} from "../helpers/variables";
+import { search as service } from "../services/search.js";
+import { asyncWrapper, responseData } from "../helpers/apiHelpers.js";
+import { SearchType } from "../types/searchTypes.js";
+import { MAX_LIMIT_PER_PAGE } from "../../helpers/variables.js";
+import { DEFAULT_LIMIT_PER_PAGE } from "../../helpers/variables.js";
+import { DEFAULT_PAGE } from "../../helpers/variables.js";
 
 const getRecipeByTitleController = async (req, res) => {
   const {

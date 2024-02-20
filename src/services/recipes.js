@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-import { Recipe } from "../models";
+import { Recipe } from "../models/recipe.js";
 
 // Get recipes with pagination
 const getRecipes = async (limit, page) => {

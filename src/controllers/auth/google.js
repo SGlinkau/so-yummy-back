@@ -1,5 +1,5 @@
-import { asyncWrapper } from "../../helpers/apiHelpers";
-import { updateTokensById } from "../../services/auth";
+import { asyncWrapper } from "../../helpers/apiHelpers.js";
+import { updateTokensById } from "../../services/auth.js";
 
 const { FRONT_END_URL } = process.env;
 

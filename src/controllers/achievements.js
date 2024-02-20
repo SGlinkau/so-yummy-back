@@ -1,5 +1,5 @@
-import { asyncWrapper, responseData } from "../helpers/apiHelpers";
-import { achievements as service } from "../services";
+import { asyncWrapper, responseData } from "../helpers/apiHelpers.js";
+import { achievements as service } from "../services/index.js";
 
 const getAchievements = async (req, res) => {
   const { id } = req.user;

@@ -1,9 +1,9 @@
-import { find } from "../models/ingredient";
-import { asyncWrapper } from "../helpers/apiHelpers";
+import { find } from "../models/ingredient.js";
+import { asyncWrapper } from "../helpers/apiHelpers.js";
 
-const getIngredient = async (req, res) => {
+const getIngredientHandler = async (req, res) => {
   const ingredients = await find();
   res.send(ingredients);
 };
 
-export const getIngredient = asyncWrapper(getIngredient);
+export const getIngredient = asyncWrapper(getIngredientHandler);

@@ -1,8 +1,8 @@
 import { sign } from "jsonwebtoken";
 require("dotenv").config();
-import { UnAuthorizedError } from "../helpers/errors";
-import { User } from "../models";
-import { getUserByEmail } from "./user";
+import { UnAuthorizedError } from "../helpers/errors.js";
+import { User } from "../models/user.js";
+import { getUserByEmail } from "./user.js";
 
 const { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } = process.env;
 

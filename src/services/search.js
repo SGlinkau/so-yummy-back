@@ -1,4 +1,4 @@
-import { aggregate } from "../models/recipe";
+import { aggregate } from "../models/recipe.js";
 
 const getRecipeByTitle = async (value, page, limit) => {
   return await aggregate([

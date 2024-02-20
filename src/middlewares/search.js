@@ -1,7 +1,7 @@
 import { object } from "joi";
-import { validationFields, validationRequest } from "../helpers/validation";
-
-import { query } from "../types/requestFieldType";
+import { validationFields } from "../helpers/validation.js";
+import { validationRequest } from "../helpers/validation.js";
+import { query } from "../types/requestFieldType.js";
 
 const querySchema = object({
   type: validationFields.type.required(),

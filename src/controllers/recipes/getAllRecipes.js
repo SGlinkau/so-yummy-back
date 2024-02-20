@@ -1,10 +1,8 @@
-import { recipes as service } from "../../services";
-import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
-import {
-  DEFAULT_LIMIT_PER_PAGE,
-  DEFAULT_PAGE,
-  MAX_LIMIT_PER_PAGE,
-} from "../../helpers/variables";
+import { recipes as service } from "../../services/index.js";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
+import { MAX_LIMIT_PER_PAGE } from "../../helpers/variables.js";
+import { DEFAULT_LIMIT_PER_PAGE } from "../../helpers/variables.js";
+import { DEFAULT_PAGE } from "../../helpers/variables.js";
 
 const getAllRecipes = async (req, res) => {
   const { limit = DEFAULT_LIMIT_PER_PAGE, page = DEFAULT_PAGE } = req.query;

@@ -1,10 +1,8 @@
-import { favorites as service } from "../../services";
-import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
-import {
-  MAX_LIMIT_PER_PAGE,
-  DEFAULT_LIMIT_PER_PAGE,
-  DEFAULT_PAGE,
-} from "../../helpers/variables";
+import { favorites as service } from "../../services/index.js";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
+import { MAX_LIMIT_PER_PAGE } from "../../helpers/variables.js";
+import { DEFAULT_LIMIT_PER_PAGE } from "../../helpers/variables.js";
+import { DEFAULT_PAGE } from "../../helpers/variables.js";
 
 const getFavorite = async (req, res) => {
   const { id } = req.user;

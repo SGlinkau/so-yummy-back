@@ -1,6 +1,6 @@
-import { shoppingList as service } from "../../services";
-import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
-import { convertShoppingItemData } from "../../helpers/convertShoppingItemData";
+import { shoppingList as service } from "../../services/index.js";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers.js";
+import { convertShoppingItemData } from "../../helpers/convertShoppingItemData.js";
 
 const addToShoppingList = async (req, res) => {
   const { ingredientId, value, recipeId } = req.body;

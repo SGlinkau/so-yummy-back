@@ -1,5 +1,5 @@
 import { object } from "joi";
-import { validationFields, validationRequest } from "../helpers/validation";
+import { validationFields, validationRequest } from "../helpers/validation.js";
 
 import { query } from "../types/requestFieldType";
 
