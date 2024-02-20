@@ -1,5 +1,5 @@
-const { recipes: service } = require("../../services");
-const { asyncWrapper, responseData } = require("../../helpers/apiHelpers");
+import { recipes as service } from "../../services";
+import { asyncWrapper, responseData } from "../../helpers/apiHelpers";
 
 const getNewest = async (req, res) => {
   const categories = req.query.categories.split(",");
@@ -16,4 +16,4 @@ const getNewest = async (req, res) => {
   );
 };
 
-module.exports = asyncWrapper(getNewest);
+export default asyncWrapper(getNewest);
