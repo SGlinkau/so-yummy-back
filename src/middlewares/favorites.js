@@ -1,8 +1,7 @@
-import pkg from "joi";
-const { object } = pkg;
+import Joi from "joi";
 import { validationFields, validationRequest } from "../helpers/validation.js";
 
-const favoritesSchema = object({
+const favoritesSchema = Joi.object({
   recipeId: validationFields.id.required(),
 });
 

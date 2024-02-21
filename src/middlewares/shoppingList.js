@@ -1,16 +1,15 @@
-import pkg from "joi";
-const { object } = pkg;
+import Joi from "joi";
 import { validationFields } from "../helpers/validation.js";
 import { validationRequest } from "../helpers/validation.js";
 import { RequestFieldType } from "../types/requestFieldType.js";
 
-const ShoppingListSchema = object({
+const ShoppingListSchema = Joi.object({
   value: validationFields.value.required(),
   ingredientId: validationFields.id.required(),
   recipeId: validationFields.id.required(),
 });
 
-const deleteSchema = object({
+const deleteSchema = Joi.object({
   id: validationFields.id.required(),
 });
 

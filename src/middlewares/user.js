@@ -1,15 +1,13 @@
-import pkg from "joi";
-const { object } = pkg;
-import { validationFields } from "../helpers/validation.js";
-import { validationRequest } from "../helpers/validation.js";
+import Joi from "joi";
+import { validationFields, validationRequest } from "../helpers/validation.js";
 import { ValidationError } from "../helpers/errors.js";
 import { RequestFieldType } from "../types/requestFieldType.js";
 
-const editProfileSchema = object({
+const editProfileSchema = Joi.object({
   name: validationFields.name.optional(),
 });
 
-const addSubscriptionSchema = object({
+const addSubscriptionSchema = Joi.object({
   email: validationFields.email.required(),
 });
 

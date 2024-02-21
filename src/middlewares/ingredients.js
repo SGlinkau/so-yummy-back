@@ -1,11 +1,8 @@
-// import { object } from "joi";
-import pkg from "joi";
-const { object } = pkg;
+import Joi from "joi";
 import { validationFields, validationRequest } from "../helpers/validation.js";
-
 import { query } from "../types/requestFieldType.js";
 
-const querySchema = object({
+const querySchema = Joi.object({
   value: validationFields.value.optional(),
 });
 

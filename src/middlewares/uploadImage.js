@@ -1,8 +1,10 @@
 import { v2 as cloudinary } from "cloudinary";
 import multer from "multer";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
-require("dotenv").config();
+import { config as dotenvConfig } from "dotenv";
 import { ValidationError } from "../helpers/errors.js";
+
+dotenvConfig();
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -12,18 +14,15 @@ cloudinary.config({
 
 const avatarStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
-  params: (req) => {
-    return {
-      folder: "avatars",
-      allowedFormats: ["jpg", "jpeg", "png"],
-      public_id: `${req.user.id}`,
-      transformation: [
-        { width: 250, height: 250, crop: "limit" },
-        { quality: 100 },
-        { fetch_format: "auto" },
-        { format: "jpg", filename: `${req.user.id}` },
-      ],
-    };
+  params: {
+    folder: "avatars",
+    allowedFormats: ["jpg", "jpeg", "png"],
+    transformation: [
+      { width: 250, height: 250, crop: "limit" },
+      { quality: 100 },
+      { fetch_format: "auto" },
+      { format: "jpg" },
+    ],
   },
 });
 
@@ -31,8 +30,13 @@ const recipeStorage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: "recipes",
-    allowedFormats: ["jpg", "png"],
-    transformation: [{ width: 600, height: 600, crop: "limit" }],
+    allowedFormats: ["jpg", "jpeg", "png"],
+    transformation: [
+      { width: 500, height: 500, crop: "limit" },
+      { quality: 100 },
+      { fetch_format: "auto" },
+      { format: "jpg" },
+    ],
   },
 });
 
@@ -46,14 +50,12 @@ const fileFilter = (_req, file, cb) => {
   cb(null, true);
 };
 
-// Avatar multer
-const avatarImage = multer({
+export const avatarImage = multer({
   storage: avatarStorage,
   fileFilter,
 });
 
-// Recipe multer
-const recipeImage = multer({
+export const recipeImage = multer({
   storage: recipeStorage,
   fileFilter,
 });

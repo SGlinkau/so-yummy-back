@@ -1,9 +1,7 @@
-import passport, { use } from "passport";
-import pkg from "passport";
-const { use } = pkg;
+import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 
-use(
+passport.use(
   new GoogleStrategy(
     {
       clientID: "YOUR_GOOGLE_CLIENT_ID",
