@@ -19,3 +19,15 @@ export {
   shoppingList,
   favorites,
 };
+
+export const controllers = {
+  auth,
+  ownRecipes,
+  popularRecipes,
+  achievements,
+  search,
+  ingredients,
+  user,
+  shoppingList,
+  favorites,
+};

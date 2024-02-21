@@ -1,8 +1,6 @@
 import { Router } from "express";
-// ZAMIENIONO IMPORT Z PASSPORT NA IMPORT PKG I INNY IMPORT
 import pkg from "passport";
 const { authenticate } = pkg;
-// import { authenticate } from "passport";
 import { auth as controller } from "../../controllers/index.js";
 import { auth as middleware } from "../../middlewares/index.js";
 
