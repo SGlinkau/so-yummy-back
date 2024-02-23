@@ -1,7 +1,7 @@
-import { ShoppingListModel } from "../models/shoppingList.js";
+import ShoppingList from "../models/shoppingList.js";
 
 export const getAll = async (id) => {
-  const shoppingList = await ShoppingListModel.aggregate([
+  const shoppingList = await ShoppingList.aggregate([
     {
       $match: {
         owner: id,

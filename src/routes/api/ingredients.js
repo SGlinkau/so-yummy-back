@@ -1,7 +1,7 @@
 import { Router } from "express";
 export const router = Router();
 
-import { auth as authMiddleware } from "../../middlewares/auth.js";
+import { auth as authMiddleware } from "../../middlewares/index.js";
 
 import { ingredients as middleware } from "../../middlewares/index.js";
 import { ingredients as controller } from "../../controllers/index.js";

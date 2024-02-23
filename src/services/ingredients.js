@@ -7,7 +7,7 @@ export const getIngredients = async (value) => {
     searchQuery.ttl = { $regex: new RegExp(`^${value}`, "i") };
   }
 
-  return await Ingredient(searchQuery);
+  return await Ingredient.find({ ttl: searchQuery.ttl });
 };
 
 // export default {

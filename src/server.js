@@ -1,6 +1,7 @@
 import { listen } from "./app.js";
 import { connectToDatabase } from "./db/connection.js";
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const { SERVER_PORT = 8001, DB_URL } = process.env;
 
