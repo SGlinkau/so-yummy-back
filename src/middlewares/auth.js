@@ -27,7 +27,7 @@ const refreshSchema = Joi.object({
   refreshToken: validationFields.refreshToken.required(),
 });
 
-export const auth = async (req, _res, next) => {
+const auth = async (req, _res, next) => {
   try {
     const { authorization } = req.headers;
 

@@ -12,6 +12,8 @@ shoppingListRouter.use(authMiddleware.auth);
 shoppingListRouter
   .get("/", paginationMiddleware.pagination, controller.get)
   .post("/", middleware.add, controller.add)
-  .delete("/:id", middleware.delete, controller.delete);
-
-export default shoppingListRouter;
+  .delete(
+    "/:id",
+    middleware.deleteValidator,
+    controller.removeFromShoppingList
+  );

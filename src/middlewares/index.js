@@ -1,5 +1,5 @@
 import * as error from "./errors.js";
-import * as auth from "./auth.js";
+import auth from "./auth.js";
 import * as recipe from "./recipe.js";
 import * as googleAuth from "./googleAuth.js";
 import * as search from "./search.js";
